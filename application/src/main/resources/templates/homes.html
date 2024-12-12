@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Homes</title>
+        <style>
+            /* Simpele styling voor de kaartjes */
+            .card {
+                border: 1px solid #ccc;
+                padding: 20px;
+                margin: 10px;
+                width: 250px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                display: inline-block;
+                vertical-align: top;
+                border-radius: 8px;
+                transition: transform 0.2s ease-in-out;
+            }
+
+            .card:hover {
+                transform: translateY(-5px);
+            }
+
+            .card h3 {
+                margin: 0;
+                font-size: 1.2em;
+                color: #333;
+            }
+
+            .card p {
+                margin: 5px 0;
+                font-size: 1em;
+                color: #666;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Mijn huizen</h1>
+
+        <div class="homes-container">
+            <div th:each="home : ${homes}" class="card">
+                <h3 th:text="${home.address}"></h3>
+                <p>Type: <span th:text="${home.type}"></span></p>
+                <p>Bouwjaar: <span th:text="${home.yearOfConstruction}"></span></p>
+                <a th:href="@{/homes/{id}(id=${home.id})}">Bekijk details</a>
+            </div>
+        </div>
+
+        <a th:href="@{/}">Terug naar Index</a>
+    </body>
+</html>

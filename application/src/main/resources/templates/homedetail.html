@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="/css/styles.css">
+        <title>Contracten Pagina</title>
+    </head>
+
+    <body>
+    <h1>Informatie</h1>
+
+    <div class="contract-details-container">
+
+        <div class="contract-details-container">
+            <!-- Sectie voor de huisinformatie -->
+            <div class="active-contract-card">
+                <h3>Huisinformatie</h3>
+                <p>Bouwjaar: <span th:text="${home.yearOfConstruction}"></span></p>
+                <a th:href="@{/payments/{id}(id=${activeContract.tenant.getId()})}">Bekijk onderhoudsverzoeken</a>
+            </div>
+
+            <!-- Sectie voor de actieve huurder -->
+            <div class="active-contract-card">
+                <h3>Actieve huurder</h3>
+                <div th:if="${activeContract != null}" class="contract-card">
+                    <h4>Naam: <span th:text="${activeContract.tenant.name}"></span></h4>
+                    <p>Email: <span th:text="${activeContract.tenant.email}"></span></p>
+                    <p>Description: <span th:text="${activeContract.tenant.description}"></span></p>
+                    <p>Startdatum: <span th:text="${activeContract.startDate}"></span></p>
+                    <p>Einddatum: <span th:text="${activeContract.endDate}"></span></p>
+                </div>
+
+                <!-- Bericht als er geen actieve huurder is -->
+                <div th:if="${activeContract == null}" class="no-active-contract-message">
+                    <p><span th:text="${message}"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contract-history-card">
+            <h3>Contractgeschiedenis</h3>
+
+            <!-- Loop over alle contracten -->
+            <div th:each="contract : ${contracts}" class="contract-card">
+                <h4>Huurder: <span th:text="${contract.tenant.name}"></span></h4>
+                <p>Email: <span th:text="${contract.tenant.email}"></span></p>
+                <p>Description: <span th:text="${contract.tenant.description}"></span></p>
+                <p>Startdatum: <span th:text="${contract.startDate}"></span></p>
+                <p>Einddatum: <span th:text="${contract.endDate}"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <a th:href="@{/}">Terug naar Index</a>
+    </body>
+</html>

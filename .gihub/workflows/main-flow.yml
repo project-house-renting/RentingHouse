@@ -1,0 +1,193 @@
+name: Build and deliver containers
+
+on: push
+
+jobs:
+  tenantservice:
+    runs-on: ubuntu-latest
+    name: Java 17 build, deliver tenant-service container
+    steps:
+      - name: check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          cache: maven
+          distribution: adopt
+
+      - name: Build and package project
+        working-directory: ./tenant-service
+        run: mvn package -B -DskipTests
+
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Docker Build
+        run: docker build -t ${{ secrets.DOCKER_USER }}/tenant-service:latest ./tenant-service
+
+      - name: Upload container to Docker Hub with Push
+        run: docker push ${{ secrets.DOCKER_USER }}/tenant-service:latest
+
+  homeservice:
+    runs-on: ubuntu-latest
+    name: Java 17 build, deliver home-service container
+    steps:
+      - name: check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          cache: maven
+          distribution: adopt
+
+      - name: Build and package project
+        working-directory: ./home-service
+        run: mvn package -B -DskipTests
+
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Docker Build
+        run: docker build -t ${{ secrets.DOCKER_USER }}/home-service:latest ./home-service
+
+      - name: Upload container to Docker Hub with Push
+        run: docker push ${{ secrets.DOCKER_USER }}/home-service:latest
+
+  contractservice:
+    runs-on: ubuntu-latest
+    name: Java 17 build, deliver contract-service container
+    steps:
+      - name: check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          cache: maven
+          distribution: adopt
+
+      - name: Build and package project
+        working-directory: ./contract-service
+        run: mvn package -B -DskipTests
+
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Docker Build
+        run: docker build -t ${{ secrets.DOCKER_USER }}/contract-service:latest ./contract-service
+
+      - name: Upload container to Docker Hub with Push
+        run: docker push ${{ secrets.DOCKER_USER }}/contract-service:latest
+
+  maintenanceservice:
+    runs-on: ubuntu-latest
+    name: Java 17 build, deliver maintenance-service container
+    steps:
+      - name: check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          cache: maven
+          distribution: adopt
+
+      - name: Build and package project
+        working-directory: ./maintenance-service
+        run: mvn package -B -DskipTests
+
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Docker Build
+        run: docker build -t ${{ secrets.DOCKER_USER }}/maintenance-service:latest ./maintenance-service
+
+      - name: Upload container to Docker Hub with Push
+        run: docker push ${{ secrets.DOCKER_USER }}/maintenance-service:latest
+
+  paymentservice:
+    runs-on: ubuntu-latest
+    name: Java 17 build, deliver payment-service container
+    steps:
+      - name: check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          cache: maven
+          distribution: adopt
+
+      - name: Build and package project
+        working-directory: ./payment-service
+        run: mvn package -B -DskipTests
+
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Docker Build
+        run: docker build -t ${{ secrets.DOCKER_USER }}/maintenance-service:latest ./payment-service
+
+      - name: Upload container to Docker Hub with Push
+        run: docker push ${{ secrets.DOCKER_USER }}/payment-service:latest
+
+  apigateway:
+    runs-on: ubuntu-latest
+    name: Java 17 build, deliver api-gateway container
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          cache: maven
+          distribution: adopt
+
+      - name: Build and package project
+        working-directory: ./api-gateway
+        run: mvn package -B -DskipTests
+
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Docker Build
+        run: docker build -t ${{ secrets.DOCKER_USER }}/api-gateway:latest ./api-gateway
+
+      - name: Upload container to Docker Hub with Push
+        run: docker push ${{ secrets.DOCKER_USER }}/api-gateway:latest
+
+  application:
+    runs-on: ubuntu-latest
+    name: Java 17 build, deliver rental-application container
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: 17
+          cache: maven
+          distribution: adopt
+
+      - name: Build and package project
+        working-directory: ./application
+        run: mvn package -B -DskipTests
+
+      - name: Docker login
+        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Docker Build
+        run: docker build -t ${{ secrets.DOCKER_USER }}/rental-application:latest ./application
+
+      - name: Upload container to Docker Hub with Push
+        run: docker push ${{ secrets.DOCKER_USER }}/rental-application:latest

@@ -1,0 +1,41 @@
+/* Container voor huisinformatie en actieve huurder */
+.contract-details-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+/* Individuele kaarten */
+.active-contract-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+}
+
+/* Tekststijlen */
+h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+h4 {
+    font-size: 1.2em;
+    color: #2d2d2d;
+}
+
+p {
+    font-size: 1em;
+    color: #555;
+}
+
+/* Geen actieve huurder bericht */
+.no-active-contract-message {
+    font-size: 1.1em;
+    color: #ff4d4d;
+    margin-top: 10px;
+}
