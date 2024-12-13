@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 public class ContractService {
-    private static final String BASE_URL = "http://localhost:8086/api/contract";
+    private static final String BASE_URL = "http://host.docker.internal:8086/api/contract";
 
     public List<ContractResponse> getContractsFromHome(String homeId) {
         RestTemplate restTemplate = new RestTemplate();

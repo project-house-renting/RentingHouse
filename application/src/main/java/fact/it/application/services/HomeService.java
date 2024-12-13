@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class HomeService {
-    private static final String BASE_URL = "http://localhost:8081/api/home";
+    private static final String BASE_URL = "http://host.docker.internal:8081/api/home";
 
     public HomeResponse[] getHomes() {
         RestTemplate restTemplate = new RestTemplate();
