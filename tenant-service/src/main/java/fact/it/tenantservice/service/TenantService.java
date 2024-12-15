@@ -33,8 +33,15 @@ public class TenantService {
                     .email("marie@dfqfqs.com")
                     .build();
 
+            Tenant tenant2 = Tenant.builder()
+                    .name("Sofie")
+                    .description("dfqsfsqdfsdfsfsqsf")
+                    .email("sofie@dfqfqs.com")
+                    .build();
+
             tenantRepository.save(tenant);
             tenantRepository.save(tenant1);
+            tenantRepository.save(tenant2);
         }
     }
 

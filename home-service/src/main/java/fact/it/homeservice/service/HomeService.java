@@ -36,21 +36,37 @@ public class HomeService {
 
         if (homeRepository.count() <= 0) {
             Home home = Home.builder()
-                    .userId(1L)
                     .address("Oude Veerlebaan 12")
                     .yearOfConstruction("2012")
                     .type("house")
+                    .isRentable(true)
+                    .build();
+
+            Home home3 = Home.builder()
+                    .address("Berthoutstraat 2")
+                    .yearOfConstruction("1990")
+                    .type("house")
+                    .isRentable(true)
                     .build();
 
             Home home1 = Home.builder()
-                    .userId(2L)
                     .address("Kerkhofweg 18")
                     .yearOfConstruction("2002")
                     .type("house")
+                    .isRentable(false)
+                    .build();
+
+            Home home2 = Home.builder()
+                    .address("Steentjesstraat 7")
+                    .yearOfConstruction("2004")
+                    .type("rijhuis")
+                    .isRentable(false)
                     .build();
 
             homeRepository.save(home);
             homeRepository.save(home1);
+            homeRepository.save(home2);
+            homeRepository.save(home3);
         }
     }
 
@@ -59,14 +75,16 @@ public class HomeService {
         return homes.stream().map(this::mapToHomeResponse).toList();
     }
 
+    public List<HomeResponse> getAllAvailableHomes() {
+        List<Home> homes = homeRepository.findAll()
+                .stream().filter(Home::isRentable).toList();
+
+        return homes.stream().map(this::mapToHomeResponse).toList();
+    }
+
     public HomeResponse getHomeById(String id) {
         Home home = homeRepository.findHomeById(id);
         return mapToHomeResponse(home);
-    }
-
-    public List<HomeResponse> getHomesByUserId(Long id) {
-        List<Home> home = homeRepository.findHomesByUserId(id);
-        return home.stream().map(this::mapToHomeResponse).toList();
     }
 
     public void addHome(HomeRequest homeRequest) {
@@ -74,6 +92,7 @@ public class HomeService {
                 .type(homeRequest.getType())
                 .yearOfConstruction(homeRequest.getYearOfConstruction())
                 .address(homeRequest.getAddress())
+                .isRentable(true)
                 .build();
 
         homeRepository.save(home);
@@ -86,7 +105,7 @@ public class HomeService {
             home.setAddress(homeRequest.getAddress());
             home.setType(home.getType());
             home.setYearOfConstruction(homeRequest.getYearOfConstruction());
-
+            home.setRentable(homeRequest.isRentable());
             homeRepository.save(home);
         }
     }
@@ -102,7 +121,6 @@ public class HomeService {
     private HomeResponse mapToHomeResponse(Home home) {
         return HomeResponse.builder()
                 .id(home.getId())
-                .userId(home.getUserId())
                 .address(home.getAddress())
                 .yearOfConstruction(home.getYearOfConstruction())
                 .type(home.getType())

@@ -80,6 +80,17 @@ services:
       TENANT_SERVICE_BASEURL: tenant-service:8082
       CONTRACT_SERVICE_BASEURL: contract-service:8086
 
+  rental-application:
+    depends_on:
+      - api-gateway
+    image: sanderjannes/rental-application
+    ports:
+      - 8080:8080
+    links:
+      - api-gateway
+    environment:
+      API_GATEWAY_BASEURL: api-gateway:8085
+
 volumes:
   mongodb_home_data:
   mysql_tenant_data:

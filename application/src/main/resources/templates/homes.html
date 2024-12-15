@@ -35,14 +35,13 @@
         </style>
     </head>
     <body>
-        <h1>Mijn huizen</h1>
+        <h1>Onze huizen</h1>
 
         <div class="homes-container">
             <div th:each="home : ${homes}" class="card">
                 <h3 th:text="${home.address}"></h3>
                 <p>Type: <span th:text="${home.type}"></span></p>
                 <p>Bouwjaar: <span th:text="${home.yearOfConstruction}"></span></p>
-                <a th:href="@{/homes/{id}(id=${home.id})}">Bekijk details</a>
             </div>
         </div>
 

@@ -16,7 +16,7 @@
             <div class="active-contract-card">
                 <h3>Huisinformatie</h3>
                 <p>Bouwjaar: <span th:text="${home.yearOfConstruction}"></span></p>
-                <a th:href="@{/payments/{id}(id=${activeContract.tenant.getId()})}">Bekijk onderhoudsverzoeken</a>
+                <a th:if="${activeContract != null}" th:href="@{/payments/{id}(id=${activeContract.tenant.getId()})}">Bekijk onderhoudsverzoeken</a>
             </div>
 
             <!-- Sectie voor de actieve huurder -->
@@ -51,6 +51,6 @@
         </div>
     </div>
 
-    <a th:href="@{/}">Terug naar Index</a>
+    <a th:href="@{/admin}">Terug naar Index</a>
     </body>
 </html>

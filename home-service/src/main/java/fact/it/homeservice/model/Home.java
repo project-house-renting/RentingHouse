@@ -21,5 +21,5 @@ public class Home {
     private String type;
     private String yearOfConstruction;
 
-    private Long userId;
+    private boolean isRentable;
 }

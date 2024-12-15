@@ -1,11 +1,9 @@
-package fact.it.homeservice.dto;
+package fact.it.contractservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @Builder
@@ -17,4 +15,6 @@ public class HomeResponse {
     private String address;
     private String type;
     private String yearOfConstruction;
+
+    private Long userId;
 }

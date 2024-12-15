@@ -17,6 +17,12 @@ import java.util.List;
 public class HomeController {
     private final HomeService homeService;
 
+    @GetMapping("/available")
+    @ResponseStatus(HttpStatus.OK)
+    public List<HomeResponse> getAllAvailableHomes() {
+        return homeService.getAllAvailableHomes();
+    }
+
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public List<HomeResponse> getAllHomes() {
@@ -27,12 +33,6 @@ public class HomeController {
     @ResponseStatus(HttpStatus.OK)
     public HomeResponse getHomeById(@PathVariable String id) {
         return homeService.getHomeById(id);
-    }
-    
-    @GetMapping("/user/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public List<HomeResponse> getHomesByUserId(@PathVariable Long id) {
-        return homeService.getHomesByUserId(id);
     }
 
     @PostMapping

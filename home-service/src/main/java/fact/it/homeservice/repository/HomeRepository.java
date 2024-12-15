@@ -10,7 +10,4 @@ import java.util.Optional;
 public interface HomeRepository extends MongoRepository<Home, String> {
     @Query("{ '_id': ?0 }")
     Home findHomeById(String id);
-
-    @Query("{ 'userId': ?0 }")
-    List<Home> findHomesByUserId(Long userId);
 }
