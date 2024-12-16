@@ -30,12 +30,12 @@ public class MaintenanceService {
     public void loadData() {
         if (maintenanceRepository.count() <= 0){
             Maintenance maintenance1 = Maintenance.builder()
-                    .homeId("675ffbb6566a237391d38313")
+                    .homeId("home1")
                     .maintenanceDate(LocalDate.now())
                     .description("Gas pipe leak")
                     .build();
             Maintenance maintenance2 = Maintenance.builder()
-                    .homeId("675ffbb6566a237391d38313")
+                    .homeId("home1")
                     .maintenanceDate(LocalDate.now())
                     .description("light bulp in kitchen broke")
                     .build();

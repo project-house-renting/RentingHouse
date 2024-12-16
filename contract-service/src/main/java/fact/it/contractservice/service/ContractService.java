@@ -38,7 +38,7 @@ public class ContractService {
         if (contractRepository.count() <= 0) {
             // Oude Veerlebaan
             Contract contract = Contract.builder()
-                    .homeId("675ffbb6566a237391d38313")
+                    .homeId("home1")
                     .tenantId(1L)
                     .startDate(LocalDate.now().minusDays(10))
                     .endDate(LocalDate.now().plusMonths(2))
@@ -46,7 +46,7 @@ public class ContractService {
                     .build();
 
             Contract contract1 = Contract.builder()
-                    .homeId("675ffbb6566a237391d38313")
+                    .homeId("home1")
                     .tenantId(3L)
                     .startDate(LocalDate.now().minusDays(42))
                     .endDate(LocalDate.now().minusDays(8))
@@ -56,7 +56,7 @@ public class ContractService {
 
             // Kerkhofweg
             Contract contract2 = Contract.builder()
-                    .homeId("675ffbb6566a237391d38314")
+                    .homeId("home2")
                     .tenantId(1L)
                     .startDate(LocalDate.now().minusDays(64))
                     .endDate(LocalDate.now().minusDays(20))
@@ -64,7 +64,7 @@ public class ContractService {
                     .build();
 
             Contract contract3 = Contract.builder()
-                    .homeId("675ffbb6566a237391d38314")
+                    .homeId("home2")
                     .tenantId(2L)
                     .startDate(LocalDate.now().minusDays(210))
                     .endDate(LocalDate.now().minusDays(110))
