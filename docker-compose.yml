@@ -49,8 +49,8 @@ services:
       MYSQL_DB_PASSWORD: abc123
       MYSQL_DB_HOST: mysql-contract
       MYSQL_DB_PORT: 3306
-      HOME_SERIVCE_BASEURL: home-service:8081
       TENANT_SERVICE_BASEURL: tenant-service:8082
+      PAYMENT_SERVICE_BASEURL: payment-service:8084
     depends_on:
       - mysql-contract
       - home-service
@@ -63,15 +63,16 @@ services:
     environment:
       MONGO_DB_HOST: mongo-home
       MONGO_DB_PORT: 27017
-      MAINTENANCE_SERVICE_BASEURL: "---MAINTENANCE SERVICE...---"
+      MAINTENANCE_SERVICE_BASEURL: maintenance-service:8083
     depends_on:
       - mongo-home
+      - maintenance-service
     
   maintenance-service:
     image: sanderjannes/maintenance-service
     ports:
       - 8083:8083
-    enviroment:
+    environment:
       MONGO_DB_HOST: mongo-maintenance
       MONGO_DB_PORT: 27017
     depends_on:

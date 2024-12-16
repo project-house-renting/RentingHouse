@@ -18,8 +18,6 @@ public class PaymentService {
 
     @PostConstruct
     public void loadData() {
-
-
         if (paymentRepository.count() <= 0) {
             Payment payment = Payment.builder()
                     .tenantId(1L)

@@ -38,6 +38,7 @@ public class HomeService {
 
         if (homeRepository.count() <= 0) {
             Home home = Home.builder()
+                    .id("home1")
                     .address("Oude Veerlebaan 12")
                     .yearOfConstruction("2012")
                     .type("house")
@@ -45,6 +46,7 @@ public class HomeService {
                     .build();
 
             Home home1 = Home.builder()
+                    .id("home2")
                     .address("Kerkhofweg 18")
                     .yearOfConstruction("2002")
                     .type("house")
@@ -52,6 +54,7 @@ public class HomeService {
                     .build();
 
             Home home2 = Home.builder()
+                    .id("home3")
                     .address("Steentjesstraat 7")
                     .yearOfConstruction("2004")
                     .type("rijhuis")
@@ -121,7 +124,7 @@ public class HomeService {
         HomeResponse response = mapToHomeResponse(home);
 
         List<MaintenanceResponse> maintenances = Arrays.stream(Objects.requireNonNull(webClient.get()
-                .uri("http://" + maintenanceServiceBaseUrl + "/api/maintenance/home/{id}", home.getId())
+                .uri("http://" + maintenanceServiceBaseUrl + "/api/maintenance/home/{id}/all", home.getId())
                 .retrieve()
                 .bodyToMono(MaintenanceResponse[].class)
                 .block())).toList();
