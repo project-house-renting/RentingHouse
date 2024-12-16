@@ -2,6 +2,7 @@ package fact.it.homeservice.service;
 
 import fact.it.homeservice.dto.HomeRequest;
 import fact.it.homeservice.dto.HomeResponse;
+import fact.it.homeservice.dto.MaintenanceResponse;
 import fact.it.homeservice.model.Home;
 import fact.it.homeservice.repository.HomeRepository;
 import jakarta.annotation.PostConstruct;
@@ -13,8 +14,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 
 @Service
@@ -39,34 +41,26 @@ public class HomeService {
                     .address("Oude Veerlebaan 12")
                     .yearOfConstruction("2012")
                     .type("house")
-                    .isRentable(true)
-                    .build();
-
-            Home home3 = Home.builder()
-                    .address("Berthoutstraat 2")
-                    .yearOfConstruction("1990")
-                    .type("house")
-                    .isRentable(true)
+                    .isRentable(false)
                     .build();
 
             Home home1 = Home.builder()
                     .address("Kerkhofweg 18")
                     .yearOfConstruction("2002")
                     .type("house")
-                    .isRentable(false)
+                    .isRentable(true)
                     .build();
 
             Home home2 = Home.builder()
                     .address("Steentjesstraat 7")
                     .yearOfConstruction("2004")
                     .type("rijhuis")
-                    .isRentable(false)
+                    .isRentable(true)
                     .build();
 
             homeRepository.save(home);
             homeRepository.save(home1);
             homeRepository.save(home2);
-            homeRepository.save(home3);
         }
     }
 
@@ -85,6 +79,11 @@ public class HomeService {
     public HomeResponse getHomeById(String id) {
         Home home = homeRepository.findHomeById(id);
         return mapToHomeResponse(home);
+    }
+
+    public HomeResponse getHomeDetailsById(String id) {
+        Home home = homeRepository.findHomeById(id);
+        return mapToHomeWithDetailsResponse(home);
     }
 
     public void addHome(HomeRequest homeRequest) {
@@ -116,6 +115,19 @@ public class HomeService {
         if (home != null) {
             homeRepository.delete(home);
         }
+    }
+
+    private HomeResponse mapToHomeWithDetailsResponse(Home home) {
+        HomeResponse response = mapToHomeResponse(home);
+
+        List<MaintenanceResponse> maintenances = Arrays.stream(Objects.requireNonNull(webClient.get()
+                .uri("http://" + maintenanceServiceBaseUrl + "/api/maintenance/home/{id}", home.getId())
+                .retrieve()
+                .bodyToMono(MaintenanceResponse[].class)
+                .block())).toList();
+
+        response.setMaintenances(maintenances);
+        return response;
     }
 
     private HomeResponse mapToHomeResponse(Home home) {

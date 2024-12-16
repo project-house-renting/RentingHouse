@@ -18,25 +18,29 @@ public class ContractService {
     private String baseUrl;
 
     public List<ContractResponse> getContractsFromHome(String homeId, HttpSession session) {
-
         WebClient webClient = WebClient.builder()
                 .baseUrl("http://" + baseUrl)
                 .defaultHeader("Authorization", "Bearer " + session.getAttribute("accessToken"))
                 .build();
 
         return webClient.get()
-                .uri("/home/" + homeId + "/contracts")
+                .uri("/home/" + homeId + "/contracts/all")
                 .retrieve()
-                .onStatus(HttpStatusCode::is4xxClientError, clientResponse -> clientResponse.createException().flatMap(Mono::error))
                 .bodyToMono(ContractResponse[].class)
-                .onErrorResume(e -> Mono.just(new ContractResponse[0]))
                 .map(homeResponses -> new ArrayList<>(Arrays.asList(Objects.requireNonNull(homeResponses))))
                 .block();
     }
 
-    public Optional<ContractResponse> getActiveContract(List<ContractResponse> contracts) {
-        return contracts.stream()
-                .filter(ContractResponse::isActive)
-                .findFirst();
+    public ContractResponse getCurrentContractFromHome(String homeId, HttpSession session) {
+        WebClient webClient = WebClient.builder()
+                .baseUrl("http://" + baseUrl)
+                .defaultHeader("Authorization", "Bearer " + session.getAttribute("accessToken"))
+                .build();
+
+        return webClient.get()
+                .uri("/home/" + homeId + "/contracts/current")
+                .retrieve()
+                .bodyToMono(ContractResponse.class)
+                .block();
     }
 }

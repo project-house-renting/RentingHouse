@@ -35,6 +35,12 @@ public class HomeController {
         return homeService.getHomeById(id);
     }
 
+    @GetMapping("/{id}/details")
+    @ResponseStatus(HttpStatus.OK)
+    public HomeResponse getHomeDetailsById(@PathVariable String id) {
+        return homeService.getHomeDetailsById(id);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public void addHome

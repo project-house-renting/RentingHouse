@@ -16,7 +16,16 @@
             <div class="active-contract-card">
                 <h3>Huisinformatie</h3>
                 <p>Bouwjaar: <span th:text="${home.yearOfConstruction}"></span></p>
-                <a th:if="${activeContract != null}" th:href="@{/payments/{id}(id=${activeContract.tenant.getId()})}">Bekijk onderhoudsverzoeken</a>
+            </div>
+
+            <div class="active-contract-card">
+                <h3>Onderhoudsverzoeken</h3>
+                <ul>
+                    <li th:each="maintenance : ${home.maintenances}">
+                        <p>Title: <span th:text="${maintenance.title}"></span></p>
+                        <p>Description: <span th:text="${maintenance.description}"></span></p>
+                    </li>
+                </ul>
             </div>
 
             <!-- Sectie voor de actieve huurder -->
@@ -28,6 +37,13 @@
                     <p>Description: <span th:text="${activeContract.tenant.description}"></span></p>
                     <p>Startdatum: <span th:text="${activeContract.startDate}"></span></p>
                     <p>Einddatum: <span th:text="${activeContract.endDate}"></span></p>
+
+                    <h4>Betalingen:</h4>
+                    <ul>
+                        <li th:each="payment : ${activeContract.payments}">
+                            <p>Bedrag: <span th:text="${payment.amount}"></span></p>
+                        </li>
+                    </ul>
                 </div>
 
                 <!-- Bericht als er geen actieve huurder is -->

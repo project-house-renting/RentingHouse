@@ -9,12 +9,6 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class HomeResponse {
-    private String id;
-
-    private String address;
-    private String type;
-    private String yearOfConstruction;
-
-    private Long userId;
+public class PaymentResponse {
+    private float amount;
 }

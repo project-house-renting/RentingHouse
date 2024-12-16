@@ -42,13 +42,29 @@ spring:
           filters:
             - SetPath=/api/home/available
 
-        - id: contract-service-per-home
-          uri: http://${CONTRACT_SERVICE_BASEURL:localhost:8086}
+        - id: home-service-details
+          uri: http://${HOME_SERVICE_BASEURL:localhost:8081}
           predicates:
-            - Path=/home/{id}/contracts
+            - Path=/home/{id}/details
             - Method=GET
           filters:
-            - RewritePath=/home/?(?<id>.*)/contracts, /api/contract/home/$\{id}
+            - RewritePath=/home/?(?<id>.*)/details, /api/home/$\{id}/details
+
+        - id: contract-service-all-by-home
+          uri: http://${CONTRACT_SERVICE_BASEURL:localhost:8086}
+          predicates:
+            - Path=/home/{id}/contracts/all
+            - Method=GET
+          filters:
+            - RewritePath=/home/?(?<id>.*)/contracts/all, /api/contract/home/$\{id}/all
+
+        - id: contract-service-current-by-home
+          uri: http://${CONTRACT_SERVICE_BASEURL:localhost:8086}
+          predicates:
+            - Path=/home/{id}/contracts/current
+            - Method=GET
+          filters:
+            - RewritePath=/home/?(?<id>.*)/contracts/current, /api/contract/home/$\{id}/current
 
         - id: home-service-post
           uri: http://${HOME_SERVICE_BASEURL:localhost:8081}

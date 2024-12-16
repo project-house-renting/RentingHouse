@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,5 +18,5 @@ public class HomeResponse {
     private String type;
     private String yearOfConstruction;
 
-    private Long userId;
+    private List<MaintenanceResponse> maintenances;
 }
