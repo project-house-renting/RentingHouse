@@ -5,10 +5,7 @@ import fact.it.maintenanceservice.dto.MaintenanceResponse;
 import fact.it.maintenanceservice.service.MaintenanceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,7 +17,10 @@ import java.util.List;
 public class MaintenanceController {
     private final MaintenanceService maintenanceService;
 
-    @GetMapping("/all")
+    @GetMapping("/home/{id}/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<MaintenanceResponse> getAllMaintenances() {return maintenanceService.getAllMaintenances();}
+    public List<MaintenanceResponse> getAllMaintenances(@PathVariable String id)
+    {
+        return maintenanceService.findMaintenancesByHomeId(id);
+    }
 }
