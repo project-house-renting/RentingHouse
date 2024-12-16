@@ -11,5 +11,5 @@ public interface MaintenanceRepository extends MongoRepository<Maintenance, Long
     Maintenance findMaintenanceById(Long id);
 
     @Query("{ 'userId': ?0 }")
-    List<Maintenance> findMaintenanceByUserId(Long userId);
+    List<Maintenance> findMaintenanceByHomeId(String HomeId);
 }
