@@ -57,6 +57,4 @@ public class MaintenanceService {
                 .maintenanceDate(maintenance.getMaintenanceDate())
                 .build();
     }
-
-
 }

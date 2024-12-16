@@ -13,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MaintenanceResponse {
-    private Long id;
+    private String id;
     private String description;
 
     private LocalDate maintenanceDate;

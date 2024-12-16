@@ -23,6 +23,4 @@ public class MaintenanceController {
     @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
     public List<MaintenanceResponse> getAllMaintenances() {return maintenanceService.getAllMaintenances();}
-
-
 }
