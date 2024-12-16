@@ -52,4 +52,16 @@ public class HomeService {
                 .bodyToMono(HomeResponse.class)
                 .block();
     }
+
+    public HomeResponse getHomeDetailsById(String id, HttpSession session) {
+        WebClient webClient = WebClient.builder()
+                .defaultHeader("Authorization", "Bearer " + session.getAttribute("accessToken"))
+                .build();
+
+        return webClient.get()
+                .uri("http://" + baseUrl + "/home/" + id + "/details")
+                .retrieve()
+                .bodyToMono(HomeResponse.class)
+                .block();
+    }
 }

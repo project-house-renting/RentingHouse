@@ -44,23 +44,17 @@ public class ApplicationController {
     @GetMapping("/homes/{id}")
     public String homeDetail(@PathVariable String id, HttpSession session, Model model) {
         List<ContractResponse> contracts = contractService.getContractsFromHome(id, session);
-        Optional<ContractResponse> activeContract = contractService.getActiveContract(contracts);
-        contracts = contracts.stream().filter(contract -> !contract.isActive()).collect(Collectors.toList());
+        ContractResponse activeContract = contractService.getCurrentContractFromHome(id, session);
 
-        if (activeContract.isPresent()) {
-            model.addAttribute("activeContract", activeContract.get());
+        if (activeContract != null) {
+            model.addAttribute("activeContract", activeContract);
 
         } else {
             model.addAttribute("message", "Geen actieve huurder voor dit huis.");
         }
 
         model.addAttribute("contracts", contracts);
-        model.addAttribute("home", homeService.getHomeById(id, session));
+        model.addAttribute("home", homeService.getHomeDetailsById(id, session));
         return "homedetail";
-    }
-
-    @GetMapping("/payments/{id}")
-    public String payments(@PathVariable Long id, Model model) {
-        return "payments";
     }
 }

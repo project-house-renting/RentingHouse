@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Builder
@@ -15,5 +16,6 @@ public class ContractResponse {
     private TenantResponse tenant;
     private LocalDate startDate;
     private LocalDate endDate;
+    private List<PaymentResponse> payments;
     private boolean isActive;
 }

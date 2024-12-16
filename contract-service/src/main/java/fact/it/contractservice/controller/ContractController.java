@@ -18,21 +18,15 @@ import java.util.List;
 public class ContractController {
     private final ContractService contractService;
 
-    @GetMapping("/home/{id}")
+    @GetMapping("/home/{id}/all")
     @ResponseStatus(HttpStatus.OK)
     public List<ContractResponse> getAllContractsByUserId(@PathVariable String id) {
         return contractService.getAllContractsByHomeId(id);
     }
 
-//    @GetMapping("/all")
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<HomeTenantResponse> getAllHomeTenants() {
-//        return homeTenantService.getAll();
-//    }
-
-//    @GetMapping("/home/{id}/current")
-//    @ResponseStatus(HttpStatus.OK)
-//    public HomeTenantResponse getCurrentHomeTenantsByUserId(@PathVariable String id) {
-//        return homeTenantService.getCurrentHomeTenantByHomeId(id);
-//    }
+    @GetMapping("/home/{id}/current")
+    @ResponseStatus(HttpStatus.OK)
+    public ContractResponse getActiveContractByHomeId(@PathVariable String id) {
+        return contractService.getActiveContractByHomeId(id);
+    }
 }

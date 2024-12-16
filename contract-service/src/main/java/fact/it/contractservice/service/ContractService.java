@@ -1,7 +1,7 @@
 package fact.it.contractservice.service;
 
 import fact.it.contractservice.dto.ContractResponse;
-import fact.it.contractservice.dto.HomeResponse;
+import fact.it.contractservice.dto.PaymentResponse;
 import fact.it.contractservice.dto.TenantResponse;
 import fact.it.contractservice.model.Contract;
 import fact.it.contractservice.repository.ContractRepository;
@@ -13,7 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -25,68 +28,80 @@ public class ContractService {
     @Value("${tenantService.baseurl}")
     private String tenantServiceBaseUrl;
 
-    @Value("${homeService.baseurl}")
-    private String homeServiceBaseUrl;
+    @Value("${paymentService.baseurl}")
+    private String paymentServiceBaseUrl;
 
     @PostConstruct
     public void loadData() {
+        // Jos, Marie, Sofie
+
         if (contractRepository.count() <= 0) {
+            // Oude Veerlebaan
             Contract contract = Contract.builder()
-                    .homeId("675ee8c67c035e371751f7bc")
+                    .homeId("675ffbb6566a237391d38313")
                     .tenantId(1L)
-                    .startDate(LocalDate.now().minusDays(26))
-                    .endDate(LocalDate.now().minusDays(4))
-                    .isActive(false)
-                    .build();
-
-            Contract contract1 = Contract.builder()
-                    .homeId("675ee8c67c035e371751f7bc")
-                    .tenantId(2L)
-                    .startDate(LocalDate.now().minusDays(7))
-                    .endDate(LocalDate.now().minusDays(2))
-                    .isActive(false)
-                    .build();
-
-            Contract contract2 = Contract.builder()
-                    .homeId("675ee8c67c035e371751f7bc")
-                    .tenantId(1L)
-                    .startDate(LocalDate.now().minusDays(1))
-                    .endDate(LocalDate.now().plusDays(30))
-                    .isActive(true)
-                    .build();
-
-            Contract contract3 = Contract.builder()
-                    .homeId("675ee8c67c035e371751f7ba")
-                    .tenantId(3L)
-                    .startDate(LocalDate.now().minusDays(90))
-                    .endDate(LocalDate.now().minusDays(30))
-                    .isActive(false)
-                    .build();
-
-            Contract contract4 = Contract.builder()
-                    .homeId("675ee8c67c035e371751f7bb")
-                    .tenantId(3L)
-                    .startDate(LocalDate.now().minusDays(15))
+                    .startDate(LocalDate.now().minusDays(10))
                     .endDate(LocalDate.now().plusMonths(2))
                     .isActive(true)
                     .build();
+
+            Contract contract1 = Contract.builder()
+                    .homeId("675ffbb6566a237391d38313")
+                    .tenantId(3L)
+                    .startDate(LocalDate.now().minusDays(42))
+                    .endDate(LocalDate.now().minusDays(8))
+                    .isActive(false)
+                    .build();
+            // Oude Veerlebaan
+
+            // Kerkhofweg
+            Contract contract2 = Contract.builder()
+                    .homeId("675ffbb6566a237391d38314")
+                    .tenantId(1L)
+                    .startDate(LocalDate.now().minusDays(64))
+                    .endDate(LocalDate.now().minusDays(20))
+                    .isActive(false)
+                    .build();
+
+            Contract contract3 = Contract.builder()
+                    .homeId("675ffbb6566a237391d38314")
+                    .tenantId(2L)
+                    .startDate(LocalDate.now().minusDays(210))
+                    .endDate(LocalDate.now().minusDays(110))
+                    .isActive(false)
+                    .build();
+            // Kerkhofweg
 
             contractRepository.save(contract);
             contractRepository.save(contract1);
             contractRepository.save(contract2);
             contractRepository.save(contract3);
-            contractRepository.save(contract4);
         }
-    }
-
-    public List<ContractResponse> getAll() {
-        List<Contract> tenants = contractRepository.findAll();
-        return tenants.stream().map(this::mapToContractResponse).toList();
     }
 
     public List<ContractResponse> getAllContractsByHomeId(String id) {
         List<Contract> contracts = contractRepository.findContractsByHomeId(id);
         return contracts.stream().map(this::mapToContractResponse).toList();
+    }
+
+    public ContractResponse getActiveContractByHomeId(String id) {
+       return contractRepository.findContractsByHomeId(id).stream()
+                .filter(Contract::isActive)
+                .map(this::mapToContractResponseWithPayments)
+                .findFirst().orElse(null);
+    }
+
+    private ContractResponse mapToContractResponseWithPayments(Contract contract) {
+        ContractResponse response = mapToContractResponse(contract);
+
+        List<PaymentResponse> payments = Arrays.stream(Objects.requireNonNull(webClient.get()
+                .uri("http://" + paymentServiceBaseUrl + "/api/payment/tenant/{id}", contract.getTenantId())
+                .retrieve()
+                .bodyToMono(PaymentResponse[].class)
+                .block())).toList();
+
+        response.setPayments(payments);
+        return response;
     }
 
     private ContractResponse mapToContractResponse(Contract contract) {
@@ -103,9 +118,4 @@ public class ContractService {
                 .isActive(contract.isActive())
                 .build();
     }
-
-//    public boolean isActiveContract(Contract contract) {
-//        LocalDate today = LocalDate.now();
-//        return !contract.getStartDate().isAfter(today) && !contract.getEndDate().isBefore(today);
-//    }
 }
