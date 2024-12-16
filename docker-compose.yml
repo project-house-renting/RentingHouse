@@ -24,6 +24,22 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: abc123
 
+  mongo-maintenance:
+    image: mongo:latest
+    ports:
+      - 27018:27017
+    volumes:
+      - mongodb_maintenance_data:/data/db
+
+  mysql-payment:
+    image: mysql:latest
+    ports:
+      - 3335:3306
+    volumes:
+      - mysql_payment_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123
+
   contract-service:
     image: sanderjannes/contract-service
     ports:
@@ -50,6 +66,16 @@ services:
       MAINTENANCE_SERVICE_BASEURL: "---MAINTENANCE SERVICE...---"
     depends_on:
       - mongo-home
+    
+  maintenance-service:
+    image: sanderjannes/maintenance-service
+    ports:
+      - 8083:8083
+    enviroment:
+      MONGO_DB_HOST: mongo-maintenance
+      MONGO_DB_PORT: 27017
+    depends_on:
+      - mongo-maintenance
 
   tenant-service:
     image: sanderjannes/tenant-service
@@ -62,6 +88,18 @@ services:
       MYSQL_DB_PORT: 3306
     depends_on:
       - mysql-tenant
+  
+  payment-service:
+    image: sanderjannes/payment-service
+    ports:
+      - 8084:8084
+    environment:
+      MYSQL_DB_USERNAME: root
+      MYSQL_DB_PASSWORD: abc123
+      MYSQL_DB_HOST: mysql-payment
+      MYSQL_DB_PORT: 3306
+    depends_on:
+      - mysql-payment
 
   api-gateway:
     depends_on:
@@ -95,3 +133,5 @@ volumes:
   mongodb_home_data:
   mysql_tenant_data:
   mysql_contract_data:
+  mongodb_maintenance_data:
+  mysql_payment_data:
