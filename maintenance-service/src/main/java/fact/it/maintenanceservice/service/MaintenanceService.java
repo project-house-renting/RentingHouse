@@ -21,13 +21,13 @@ import java.util.List;
 public class MaintenanceService {
     private final MaintenanceRepository maintenanceRepository;
 
-
     @Autowired
     private MongoTemplate mongoTemplate;
 
-
     @PostConstruct
     public void loadData() {
+//        mongoTemplate.getDb().drop();
+
         if (maintenanceRepository.count() <= 0){
             Maintenance maintenance1 = Maintenance.builder()
                     .homeId("home1")

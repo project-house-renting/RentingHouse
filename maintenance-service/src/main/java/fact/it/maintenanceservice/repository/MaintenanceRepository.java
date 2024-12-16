@@ -10,6 +10,6 @@ public interface MaintenanceRepository extends MongoRepository<Maintenance, Long
     @Query("{ '_id': ?0 }")
     Maintenance findMaintenanceById(Long id);
 
-    @Query("{ 'userId': ?0 }")
+    @Query("{ 'homeId': ?0 }")
     List<Maintenance> findMaintenanceByHomeId(String HomeId);
 }
