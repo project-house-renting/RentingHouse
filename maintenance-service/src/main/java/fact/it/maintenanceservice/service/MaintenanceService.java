@@ -26,7 +26,7 @@ public class MaintenanceService {
 
     @PostConstruct
     public void loadData() {
-//        mongoTemplate.getDb().drop();
+        mongoTemplate.getDb().drop();
 
         if (maintenanceRepository.count() <= 0){
             Maintenance maintenance1 = Maintenance.builder()

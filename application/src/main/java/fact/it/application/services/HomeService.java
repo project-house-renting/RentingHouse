@@ -21,7 +21,7 @@ public class HomeService {
         WebClient webClient = WebClient.builder().build();
 
         return webClient.get()
-                .uri("http://" + baseUrl + "/homes")
+                .uri("http://" + baseUrl + "/home/available")
                 .retrieve()
                 .bodyToMono(HomeResponse[].class)
                 .map(homeResponses -> new ArrayList<>(Arrays.asList(Objects.requireNonNull(homeResponses))))
@@ -34,22 +34,10 @@ public class HomeService {
                 .build();
 
         return webClient.get()
-                .uri("http://" + baseUrl + "/homes/all")
+                .uri("http://" + baseUrl + "/home/all")
                 .retrieve()
                 .bodyToMono(HomeResponse[].class)
                 .map(homeResponses -> new ArrayList<>(Arrays.asList(Objects.requireNonNull(homeResponses))))
-                .block();
-    }
-
-    public HomeResponse getHomeById(String id, HttpSession session) {
-        WebClient webClient = WebClient.builder()
-                .defaultHeader("Authorization", "Bearer " + session.getAttribute("accessToken"))
-                .build();
-
-        return webClient.get()
-                .uri("http://" + baseUrl + "/home/" + id)
-                .retrieve()
-                .bodyToMono(HomeResponse.class)
                 .block();
     }
 

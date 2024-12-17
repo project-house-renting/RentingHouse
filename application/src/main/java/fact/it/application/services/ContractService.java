@@ -24,7 +24,7 @@ public class ContractService {
                 .build();
 
         return webClient.get()
-                .uri("/home/" + homeId + "/contracts/all")
+                .uri("/home/" + homeId + "/contract/all")
                 .retrieve()
                 .bodyToMono(ContractResponse[].class)
                 .map(homeResponses -> new ArrayList<>(Arrays.asList(Objects.requireNonNull(homeResponses))))
@@ -38,7 +38,7 @@ public class ContractService {
                 .build();
 
         return webClient.get()
-                .uri("/home/" + homeId + "/contracts/current")
+                .uri("/home/" + homeId + "/contract/current")
                 .retrieve()
                 .bodyToMono(ContractResponse.class)
                 .block();

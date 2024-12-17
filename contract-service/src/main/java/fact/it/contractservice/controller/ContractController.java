@@ -27,6 +27,6 @@ public class ContractController {
     @GetMapping("/home/{id}/current")
     @ResponseStatus(HttpStatus.OK)
     public ContractResponse getActiveContractByHomeId(@PathVariable String id) {
-        return contractService.getActiveContractByHomeId(id);
+        return contractService.getCurrentContractByHomeId(id);
     }
 }

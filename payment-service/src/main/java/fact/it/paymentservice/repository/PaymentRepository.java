@@ -8,6 +8,5 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface PaymentRepository extends JpaRepository<Payment, Long> {
-    @Query("SELECT p FROM Payment p WHERE p.tenantId = :tenantId")
-    List<Payment> findAllByTenantId(@Param("tenantId") Long tenantId);
+    List<Payment> findAllByHomeIdAndTenantId(@Param("homeId") String homeId, @Param("tenantId") Long tenantId);
 }

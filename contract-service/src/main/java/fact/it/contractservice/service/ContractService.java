@@ -33,8 +33,6 @@ public class ContractService {
 
     @PostConstruct
     public void loadData() {
-        // Jos, Marie, Sofie
-
         if (contractRepository.count() <= 0) {
             // Oude Veerlebaan
             Contract contract = Contract.builder()
@@ -84,7 +82,7 @@ public class ContractService {
         return contracts.stream().map(this::mapToContractResponse).toList();
     }
 
-    public ContractResponse getActiveContractByHomeId(String id) {
+    public ContractResponse getCurrentContractByHomeId(String id) {
        return contractRepository.findContractsByHomeId(id).stream()
                 .filter(Contract::isActive)
                 .map(this::mapToContractResponseWithPayments)
@@ -95,7 +93,8 @@ public class ContractService {
         ContractResponse response = mapToContractResponse(contract);
 
         List<PaymentResponse> payments = Arrays.stream(Objects.requireNonNull(webClient.get()
-                .uri("http://" + paymentServiceBaseUrl + "/api/payment/tenant/{id}", contract.getTenantId())
+                .uri("http://" + paymentServiceBaseUrl + "/api/payment/all",
+                        uriBuilder -> uriBuilder.queryParam("tenantId", contract.getTenantId()).queryParam("homeId", contract.getHomeId()).build())
                 .retrieve()
                 .bodyToMono(PaymentResponse[].class)
                 .block())).toList();

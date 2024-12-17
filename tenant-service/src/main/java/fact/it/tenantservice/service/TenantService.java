@@ -45,11 +45,6 @@ public class TenantService {
         }
     }
 
-    public List<TenantResponse> getAllTenants() {
-        List<Tenant> tenants = tenantRepository.findAll();
-        return tenants.stream().map(this::mapToTenantResponse).toList();
-    }
-
     public TenantResponse getTenantById(Long tenantId) {
         Tenant tenant = tenantRepository.findTenantById(tenantId);
         return mapToTenantResponse(tenant);

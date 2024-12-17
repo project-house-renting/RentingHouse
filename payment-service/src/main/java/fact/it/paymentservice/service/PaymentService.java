@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -19,27 +20,43 @@ public class PaymentService {
     @PostConstruct
     public void loadData() {
         if (paymentRepository.count() <= 0) {
-            Payment payment = Payment.builder()
-                    .tenantId(1L)
-                    .amount(125)
-                    .build();
-            paymentRepository.save(payment);
+            List<Payment> payments = List.of(
+                    Payment.builder()
+                            .tenantId(1L)
+                            .homeId("home1")
+                            .amount(125)
+                            .method("Credit Card")
+                            .paymentDate(LocalDate.of(2024, 1, 15))
+                            .build(),
+                    Payment.builder()
+                            .tenantId(1L)
+                            .homeId("home1")
+                            .amount(200)
+                            .method("Credit Card")
+                            .paymentDate(LocalDate.of(2024, 2, 10))
+                            .build(),
+                    Payment.builder()
+                            .tenantId(1L)
+                            .homeId("home2")
+                            .amount(150)
+                            .method("Paypal")
+                            .paymentDate(LocalDate.of(2024, 3, 5))
+                            .build()
+            );
+            paymentRepository.saveAll(payments);
         }
     }
 
-    public List<PaymentResponse> getAllPayments() {
-        List<Payment> payments = paymentRepository.findAll();
-        return payments.stream().map(this::mapToPaymentResponse).toList();
-    }
-
-    public List<PaymentResponse> getAllPaymentsFromTenant(Long id) {
-        List<Payment> payments = paymentRepository.findAllByTenantId(id);
+    public List<PaymentResponse> getAllPaymentsFromTenant(Long tenantId, String homeId) {
+        List<Payment> payments = paymentRepository.findAllByHomeIdAndTenantId(homeId, tenantId);
         return payments.stream().map(this::mapToPaymentResponse).toList();
     }
 
     private PaymentResponse mapToPaymentResponse(Payment payment) {
         return PaymentResponse.builder()
                 .amount(payment.getAmount())
+                .method(payment.getMethod())
+                .paymentDate(payment.getPaymentDate())
                 .build();
     }
 }

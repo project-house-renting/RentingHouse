@@ -34,7 +34,7 @@ public class HomeService {
 
     @PostConstruct
     public void loadData() {
-//        mongoTemplate.getDb().drop();
+        mongoTemplate.getDb().drop();
 
         if (homeRepository.count() <= 0) {
             Home home = Home.builder()
@@ -77,11 +77,6 @@ public class HomeService {
                 .stream().filter(Home::isRentable).toList();
 
         return homes.stream().map(this::mapToHomeResponse).toList();
-    }
-
-    public HomeResponse getHomeById(String id) {
-        Home home = homeRepository.findHomeById(id);
-        return mapToHomeResponse(home);
     }
 
     public HomeResponse getHomeDetailsById(String id) {

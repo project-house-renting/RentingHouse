@@ -29,12 +29,6 @@ public class HomeController {
         return homeService.getAllHomes();
     }
 
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public HomeResponse getHomeById(@PathVariable String id) {
-        return homeService.getHomeById(id);
-    }
-
     @GetMapping("/{id}/details")
     @ResponseStatus(HttpStatus.OK)
     public HomeResponse getHomeDetailsById(@PathVariable String id) {

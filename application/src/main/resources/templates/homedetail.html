@@ -41,7 +41,11 @@
                     <h4>Betalingen:</h4>
                     <ul>
                         <li th:each="payment : ${activeContract.payments}">
-                            <p>Bedrag: <span th:text="${payment.amount}"></span></p>
+                            <div>
+                                <p><strong>Bedrag:</strong> <span th:text="${payment.amount}"></span> EUR</p>
+                                <p><strong>Betaalmethode:</strong> <span th:text="${payment.method}"></span></p>
+                                <p><strong>Datum:</strong> <span th:text="${payment.paymentDate}"></span></p>
+                            </div>
                         </li>
                     </ul>
                 </div>

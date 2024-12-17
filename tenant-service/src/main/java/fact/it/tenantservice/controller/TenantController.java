@@ -17,12 +17,6 @@ import java.util.List;
 public class TenantController {
     private final TenantService tenantService;
 
-    @GetMapping("/all")
-    @ResponseStatus(HttpStatus.OK)
-    public List<TenantResponse> getAllTenants() {
-        return tenantService.getAllTenants();
-    }
-
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public TenantResponse getTenantById(@PathVariable Long id) {

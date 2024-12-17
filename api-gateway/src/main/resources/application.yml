@@ -29,7 +29,7 @@ spring:
         - id: home-service-all
           uri: http://${HOME_SERVICE_BASEURL:localhost:8081}
           predicates:
-            - Path=/homes/all
+            - Path=/home/all
             - Method=GET
           filters:
             - SetPath=/api/home/all
@@ -37,7 +37,7 @@ spring:
         - id: home-service-available
           uri: http://${HOME_SERVICE_BASEURL:localhost:8081}
           predicates:
-            - Path=/homes
+            - Path=/home/available
             - Method=GET
           filters:
             - SetPath=/api/home/available
@@ -53,18 +53,18 @@ spring:
         - id: contract-service-all-by-home
           uri: http://${CONTRACT_SERVICE_BASEURL:localhost:8086}
           predicates:
-            - Path=/home/{id}/contracts/all
+            - Path=/home/{id}/contract/all
             - Method=GET
           filters:
-            - RewritePath=/home/?(?<id>.*)/contracts/all, /api/contract/home/$\{id}/all
+            - RewritePath=/home/?(?<id>.*)/contract/all, /api/contract/home/$\{id}/all
 
         - id: contract-service-current-by-home
           uri: http://${CONTRACT_SERVICE_BASEURL:localhost:8086}
           predicates:
-            - Path=/home/{id}/contracts/current
+            - Path=/home/{id}/contract/current
             - Method=GET
           filters:
-            - RewritePath=/home/?(?<id>.*)/contracts/current, /api/contract/home/$\{id}/current
+            - RewritePath=/home/?(?<id>.*)/contract/current, /api/contract/home/$\{id}/current
 
         - id: home-service-post
           uri: http://${HOME_SERVICE_BASEURL:localhost:8081}
@@ -78,6 +78,6 @@ spring:
           uri: http://${HOME_SERVICE_BASEURL:localhost:8081}
           predicates:
             - Path=/home/{id}
-            - Method=GET, PUT, DELETE
+            - Method=PUT, DELETE
           filters:
             - RewritePath=/home/?(?<id>.*), /api/home/$\{id}

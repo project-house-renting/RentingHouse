@@ -16,9 +16,9 @@ import java.util.List;
 public class PaymentController {
     private final PaymentService paymentService;
 
-    @GetMapping("/tenant/{id}")
+    @GetMapping("/all")
     @ResponseStatus(HttpStatus.OK)
-    public List<PaymentResponse> getAllPaymentsFromTenant(@PathVariable Long id) {
-        return paymentService.getAllPaymentsFromTenant(id);
+    public List<PaymentResponse> getAllPaymentsFromTenant(@RequestParam Long tenantId, @RequestParam String homeId) {
+        return paymentService.getAllPaymentsFromTenant(tenantId, homeId);
     }
 }
