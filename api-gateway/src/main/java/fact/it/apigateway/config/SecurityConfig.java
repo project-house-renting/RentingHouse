@@ -16,11 +16,11 @@ public class SecurityConfig {
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity serverHttpSecurity) {
         serverHttpSecurity
-                .authorizeExchange(exchange ->
-                        exchange.pathMatchers(HttpMethod.GET,"/home/available")
-                                .permitAll()
-                                .anyExchange()
-                                .authenticated()
+                .authorizeExchange(exchange -> exchange
+                        .pathMatchers(HttpMethod.GET, "/home/available")
+                        .permitAll()
+                        .anyExchange()
+                        .access(new WhitelistAuthorizationManager())
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
                         .jwt(withDefaults())

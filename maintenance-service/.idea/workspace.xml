@@ -5,30 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2d064ae-165b-4f66-866a-24caf53a2951" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../api-gateway/src/main/java/fact/it/apigateway/config/WhitelistAuthorizationManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../api-gateway/src/main/java/fact/it/apigateway/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/src/main/java/fact/it/apigateway/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../api-gateway/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/Dto/PaymentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/Dto/PaymentResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/services/ContractService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/services/ContractService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/services/HomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/services/HomeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/services/PaymentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application/src/main/resources/templates/homedetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/../application/src/main/resources/templates/homedetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../contract-service/src/main/java/fact/it/contractservice/controller/ContractController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../contract-service/src/main/java/fact/it/contractservice/controller/ContractController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../contract-service/src/main/java/fact/it/contractservice/dto/PaymentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../contract-service/src/main/java/fact/it/contractservice/dto/PaymentResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../contract-service/src/main/java/fact/it/contractservice/service/ContractService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../contract-service/src/main/java/fact/it/contractservice/service/ContractService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../contract-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../contract-service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../home-service/src/main/java/fact/it/homeservice/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../home-service/src/main/java/fact/it/homeservice/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../home-service/src/main/java/fact/it/homeservice/dto/HomeResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../home-service/src/main/java/fact/it/homeservice/dto/HomeResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../home-service/src/main/java/fact/it/homeservice/service/HomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../home-service/src/main/java/fact/it/homeservice/service/HomeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fact/it/maintenanceservice/service/MaintenanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fact/it/maintenanceservice/service/MaintenanceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../payment-service/src/main/java/fact/it/paymentservice/controller/PaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/java/fact/it/paymentservice/controller/PaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../payment-service/src/main/java/fact/it/paymentservice/dto/PaymentResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/java/fact/it/paymentservice/dto/PaymentResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../payment-service/src/main/java/fact/it/paymentservice/model/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/java/fact/it/paymentservice/model/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../payment-service/src/main/java/fact/it/paymentservice/repository/PaymentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/java/fact/it/paymentservice/repository/PaymentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../payment-service/src/main/java/fact/it/paymentservice/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/java/fact/it/paymentservice/service/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tenant-service/src/main/java/fact/it/tenantservice/controller/TenantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenant-service/src/main/java/fact/it/tenantservice/controller/TenantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tenant-service/src/main/java/fact/it/tenantservice/service/TenantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenant-service/src/main/java/fact/it/tenantservice/service/TenantService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tenant-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../tenant-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +97,7 @@
       <workItem from="1734364787543" duration="573000" />
       <workItem from="1734374248815" duration="767000" />
       <workItem from="1734386460013" duration="712000" />
-      <workItem from="1734439351185" duration="3256000" />
+      <workItem from="1734439351185" duration="3931000" />
     </task>
     <servers />
   </component>
