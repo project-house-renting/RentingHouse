@@ -11,7 +11,7 @@ import java.util.List;
 
 public class WhitelistAuthorizationManager implements ReactiveAuthorizationManager<AuthorizationContext> {
     private final List<String> allowedEmails = List.of(
-            "sanderjannes1@gmail.com"
+            "sanderjannes1@gmail.com", "cisse.vandeweyer@gmail.com"
     );
 
     @Override
