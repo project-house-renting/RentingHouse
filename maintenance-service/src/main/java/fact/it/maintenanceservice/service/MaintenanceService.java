@@ -31,13 +31,15 @@ public class MaintenanceService {
         if (maintenanceRepository.count() <= 0){
             Maintenance maintenance1 = Maintenance.builder()
                     .homeId("home1")
-                    .maintenanceDate(LocalDate.now())
+                    .date(LocalDate.now())
                     .description("Gas pipe leak")
+                    .urgency("high")
                     .build();
             Maintenance maintenance2 = Maintenance.builder()
                     .homeId("home1")
-                    .maintenanceDate(LocalDate.now())
+                    .date(LocalDate.now())
                     .description("light bulp in kitchen broke")
+                    .urgency("low")
                     .build();
 
             maintenanceRepository.save(maintenance1);
@@ -63,7 +65,8 @@ public class MaintenanceService {
     public void addMaintenance(MaintenanceRequest maintenanceRequest) {
         Maintenance maintenance = Maintenance.builder()
                 .description(maintenanceRequest.getDescription())
-                .maintenanceDate(maintenanceRequest.getMaintenanceDate())
+                .date(maintenanceRequest.getDate())
+                .urgency(maintenanceRequest.getUrgency())
                 .homeId(maintenanceRequest.getHomeId())
                 .build();
 
@@ -72,10 +75,10 @@ public class MaintenanceService {
 
     private MaintenanceResponse mapToMaintenanceResponse(Maintenance maintenance) {
         return MaintenanceResponse.builder()
-                .id(maintenance.getId())
                 .description(maintenance.getDescription())
                 .homeId(maintenance.getHomeId())
-                .maintenanceDate(maintenance.getMaintenanceDate())
+                .urgency(maintenance.getUrgency())
+                .date(maintenance.getDate())
                 .build();
     }
 }

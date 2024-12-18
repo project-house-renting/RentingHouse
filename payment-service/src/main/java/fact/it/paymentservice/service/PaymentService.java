@@ -24,23 +24,26 @@ public class PaymentService {
                     Payment.builder()
                             .tenantId(1L)
                             .homeId("home1")
-                            .amount(125)
+                            .amount(1200.00f)
                             .method("Credit Card")
-                            .paymentDate(LocalDate.of(2024, 1, 15))
+                            .date(LocalDate.of(2024, 1, 15))
+                            .transactionId("TXN-12395XBCT6789")
                             .build(),
                     Payment.builder()
                             .tenantId(1L)
                             .homeId("home1")
-                            .amount(200)
+                            .amount(1200.00f)
                             .method("Credit Card")
-                            .paymentDate(LocalDate.of(2024, 2, 10))
+                            .date(LocalDate.of(2024, 2, 10))
+                            .transactionId("TXN-128965QEHD6729")
                             .build(),
                     Payment.builder()
                             .tenantId(1L)
                             .homeId("home2")
-                            .amount(150)
+                            .amount(1150.00f)
                             .method("Paypal")
-                            .paymentDate(LocalDate.of(2024, 3, 5))
+                            .date(LocalDate.of(2024, 3, 5))
+                            .transactionId("TXN-96762XMZ4111")
                             .build()
             );
             paymentRepository.saveAll(payments);
@@ -56,7 +59,8 @@ public class PaymentService {
         return PaymentResponse.builder()
                 .amount(payment.getAmount())
                 .method(payment.getMethod())
-                .paymentDate(payment.getPaymentDate())
+                .date(payment.getDate())
+                .transactionId(payment.getTransactionId())
                 .build();
     }
 }

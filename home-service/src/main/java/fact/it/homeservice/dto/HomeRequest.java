@@ -14,5 +14,7 @@ public class HomeRequest {
     private String address;
     private String type;
     private String yearOfConstruction;
+    private String description;
+    private float rentalPrice;
     private boolean isRentable;
 }

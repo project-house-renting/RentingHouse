@@ -14,5 +14,6 @@ import java.time.LocalDate;
 public class PaymentResponse {
     private float amount;
     private String method;
-    private LocalDate paymentDate;
+    private LocalDate date;
+    private String transactionId;
 }

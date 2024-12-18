@@ -1,19 +1,17 @@
 package fact.it.application.Dto;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
 public class PaymentResponse {
     private float amount;
     private String method;
-    private LocalDate paymentDate;
+    private LocalDate date;
+    private String transactionId;
 }

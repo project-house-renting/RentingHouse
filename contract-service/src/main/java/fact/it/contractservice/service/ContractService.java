@@ -40,7 +40,6 @@ public class ContractService {
                     .tenantId(1L)
                     .startDate(LocalDate.now().minusDays(10))
                     .endDate(LocalDate.now().plusMonths(2))
-                    .isActive(true)
                     .build();
 
             Contract contract1 = Contract.builder()
@@ -48,7 +47,6 @@ public class ContractService {
                     .tenantId(3L)
                     .startDate(LocalDate.now().minusDays(42))
                     .endDate(LocalDate.now().minusDays(8))
-                    .isActive(false)
                     .build();
             // Oude Veerlebaan
 
@@ -58,7 +56,6 @@ public class ContractService {
                     .tenantId(1L)
                     .startDate(LocalDate.now().minusDays(64))
                     .endDate(LocalDate.now().minusDays(20))
-                    .isActive(false)
                     .build();
 
             Contract contract3 = Contract.builder()
@@ -66,7 +63,6 @@ public class ContractService {
                     .tenantId(2L)
                     .startDate(LocalDate.now().minusDays(210))
                     .endDate(LocalDate.now().minusDays(110))
-                    .isActive(false)
                     .build();
             // Kerkhofweg
 
@@ -84,7 +80,7 @@ public class ContractService {
 
     public ContractResponse getCurrentContractByHomeId(String id) {
        return contractRepository.findContractsByHomeId(id).stream()
-                .filter(Contract::isActive)
+                .filter(this::isActiveContract)
                 .map(this::mapToContractResponseWithPayments)
                 .findFirst().orElse(null);
     }
@@ -114,7 +110,11 @@ public class ContractService {
                 .tenant(tenant)
                 .startDate(contract.getStartDate())
                 .endDate(contract.getEndDate())
-                .isActive(contract.isActive())
                 .build();
+    }
+
+    public boolean isActiveContract(Contract contract) {
+        LocalDate today = LocalDate.now();
+        return !contract.getStartDate().isAfter(today) && !contract.getEndDate().isBefore(today);
     }
 }
