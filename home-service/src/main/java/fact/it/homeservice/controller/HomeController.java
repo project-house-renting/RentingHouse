@@ -37,8 +37,7 @@ public class HomeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public void addHome
-            (@RequestBody HomeRequest homeRequest) {
+    public void addHome(@RequestBody HomeRequest homeRequest) {
         homeService.addHome(homeRequest);
     }
 
