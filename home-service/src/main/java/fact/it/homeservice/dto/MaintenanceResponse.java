@@ -13,5 +13,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class MaintenanceResponse {
     private String description;
-    private LocalDate maintenanceDate;
+    private LocalDate date;
+    private String urgency;
 }

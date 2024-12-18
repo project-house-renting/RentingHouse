@@ -23,7 +23,7 @@
                 <ul>
                     <li th:each="maintenance : ${home.maintenances}">
                         <p>Description: <span th:text="${maintenance.description}"></span></p>
-                        <p>Date: <span th:text="${maintenance.maintenanceDate}"></span></p>
+                        <p>Date: <span th:text="${maintenance.date}"></span></p>
                     </li>
                 </ul>
             </div>
@@ -44,7 +44,7 @@
                             <div>
                                 <p><strong>Bedrag:</strong> <span th:text="${payment.amount}"></span> EUR</p>
                                 <p><strong>Betaalmethode:</strong> <span th:text="${payment.method}"></span></p>
-                                <p><strong>Datum:</strong> <span th:text="${payment.paymentDate}"></span></p>
+                                <p><strong>Datum:</strong> <span th:text="${payment.date}"></span></p>
                             </div>
                         </li>
                     </ul>

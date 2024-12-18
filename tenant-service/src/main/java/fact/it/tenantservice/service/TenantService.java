@@ -21,27 +21,28 @@ public class TenantService {
     @PostConstruct
     public void loadData() {
         if (tenantRepository.count() <= 0) {
-            Tenant tenant = Tenant.builder()
-                    .name("Jos")
-                    .description("fffssqfssqsqfsq")
-                    .email("jos@jos.com")
-                    .build();
+            List<Tenant> tenants = List.of(
+                    Tenant.builder()
+                            .name("Jos")
+                            .description("Jos is an enthusiastic young man who is always looking for new challenges.")
+                            .email("jos.jansen@example.com")
+                            .gender("male")
+                            .build(),
+                    Tenant.builder()
+                            .name("Marie")
+                            .description("Marie is a passionate gardener who loves traveling to exotic destinations.")
+                            .email("marie.douglas@example.com")
+                            .gender("female")
+                            .build(),
+                    Tenant.builder()
+                            .name("Sofie")
+                            .description("Sofie is a freelance graphic designer with a passion for art and culture.")
+                            .email("sofie.van.dam@example.com")
+                            .gender("female")
+                            .build()
+            );
 
-            Tenant tenant1 = Tenant.builder()
-                    .name("Marie")
-                    .description("hello")
-                    .email("marie@dfqfqs.com")
-                    .build();
-
-            Tenant tenant2 = Tenant.builder()
-                    .name("Sofie")
-                    .description("dfqsfsqdfsdfsfsqsf")
-                    .email("sofie@dfqfqs.com")
-                    .build();
-
-            tenantRepository.save(tenant);
-            tenantRepository.save(tenant1);
-            tenantRepository.save(tenant2);
+            tenantRepository.saveAll(tenants);
         }
     }
 
@@ -52,10 +53,10 @@ public class TenantService {
 
     private TenantResponse mapToTenantResponse(Tenant tenant) {
         return TenantResponse.builder()
-                .id(tenant.getId())
                 .name(tenant.getName())
                 .email(tenant.getEmail())
                 .description(tenant.getDescription())
+                .gender(tenant.getGender())
                 .build();
     }
 }

@@ -16,10 +16,10 @@ import java.util.List;
 @Data
 public class Home {
     private String id;
-
     private String address;
     private String type;
+    private String description;
     private String yearOfConstruction;
-
+    private float rentalPrice;
     private boolean isRentable;
 }

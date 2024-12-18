@@ -18,7 +18,8 @@ public class Payment {
     private Long id;
     private float amount;
     private String method;
-    private LocalDate paymentDate;
+    private LocalDate date;
+    private String transactionId;
 
     private Long tenantId;
     private String homeId;

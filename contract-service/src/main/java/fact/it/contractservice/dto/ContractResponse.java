@@ -17,5 +17,4 @@ public class ContractResponse {
     private LocalDate startDate;
     private LocalDate endDate;
     private List<PaymentResponse> payments;
-    private boolean isActive;
 }

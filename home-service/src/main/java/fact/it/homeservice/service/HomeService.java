@@ -37,33 +37,37 @@ public class HomeService {
         mongoTemplate.getDb().drop();
 
         if (homeRepository.count() <= 0) {
-            Home home = Home.builder()
-                    .id("home1")
-                    .address("Oude Veerlebaan 12")
-                    .yearOfConstruction("2012")
-                    .type("house")
-                    .isRentable(false)
-                    .build();
+            List<Home> homes = List.of(
+                    Home.builder()
+                            .id("home1")
+                            .address("Oude Veerlebaan 12")
+                            .yearOfConstruction("2012")
+                            .type("house")
+                            .isRentable(false)
+                            .description("A modern house with a spacious garden.")
+                            .rentalPrice(1200.00f)
+                            .build(),
+                    Home.builder()
+                            .id("home2")
+                            .address("Kerkhofweg 18")
+                            .yearOfConstruction("2002")
+                            .type("house")
+                            .isRentable(true)
+                            .description("A cozy house with a large living room.")
+                            .rentalPrice(1150.00f)
+                            .build(),
+                    Home.builder()
+                            .id("home3")
+                            .address("Steentjesstraat 7")
+                            .yearOfConstruction("2004")
+                            .type("rijhuis")
+                            .isRentable(true)
+                            .description("A charming row house with a small front yard.")
+                            .rentalPrice(950.00f)
+                            .build()
+            );
 
-            Home home1 = Home.builder()
-                    .id("home2")
-                    .address("Kerkhofweg 18")
-                    .yearOfConstruction("2002")
-                    .type("house")
-                    .isRentable(true)
-                    .build();
-
-            Home home2 = Home.builder()
-                    .id("home3")
-                    .address("Steentjesstraat 7")
-                    .yearOfConstruction("2004")
-                    .type("rijhuis")
-                    .isRentable(true)
-                    .build();
-
-            homeRepository.save(home);
-            homeRepository.save(home1);
-            homeRepository.save(home2);
+            homeRepository.saveAll(homes);
         }
     }
 
@@ -125,6 +129,7 @@ public class HomeService {
                 .block())).toList();
 
         response.setMaintenances(maintenances);
+        response.setYearOfConstruction(home.getYearOfConstruction());
         return response;
     }
 
@@ -132,8 +137,9 @@ public class HomeService {
         return HomeResponse.builder()
                 .id(home.getId())
                 .address(home.getAddress())
-                .yearOfConstruction(home.getYearOfConstruction())
+                .description(home.getDescription())
                 .type(home.getType())
+                .rentalPrice(home.getRentalPrice())
                 .build();
     }
 }

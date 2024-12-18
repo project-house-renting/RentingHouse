@@ -21,5 +21,4 @@ public class Contract {
     private Long tenantId;
     private LocalDate startDate;
     private LocalDate endDate;
-    private boolean isActive;
 }

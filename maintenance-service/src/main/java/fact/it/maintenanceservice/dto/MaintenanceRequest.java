@@ -14,8 +14,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class MaintenanceRequest {
     private String description;
-
-    private LocalDate maintenanceDate;
+    private LocalDate date;
+    private String urgency;
 
     private String homeId;
 }

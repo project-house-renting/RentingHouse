@@ -15,9 +15,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Maintenance {
     private String id;
-    private String description;
 
-    private LocalDate maintenanceDate;
+    private String description;
+    private LocalDate date;
+    private String urgency;
 
     private String homeId;
 }
