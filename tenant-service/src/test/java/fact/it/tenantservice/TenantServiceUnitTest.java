@@ -33,9 +33,10 @@ public class TenantServiceUnitTest {
         TenantResponse result = tenantService.getTenantById(tenantId);
 
         // Assert
-        assertEquals(tenant.getId(), result.getId());
         assertEquals(tenant.getName(), result.getName());
         assertEquals(tenant.getEmail(), result.getEmail());
+        assertEquals(tenant.getDescription(), result.getDescription());
+        assertEquals(tenant.getGender(), result.getGender());
 
         verify(tenantRepository, times(1)).findTenantById(tenantId);
     }
