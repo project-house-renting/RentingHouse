@@ -18,9 +18,11 @@ Microservices:
 -   Betaling beheer
 -   Contract beheer
 
-## Microservices
+## Componenten
+![](https://github.com/project-house-renting/RentingHouse/blob/main/images/schema.png)
 
 ### Home Service
+
 
 ### Tenant Service
 
@@ -29,10 +31,14 @@ Microservices:
 ### Maintenance Service
 
 ### Contract Service
-
 Deze service zorgt voor de verbinding tussen de huizen en de huurders. Aangezien een huis meerdere huurders kan hebben, en een huurder meerdere huizen kan huren, hebben we deze service toegevoegd. Dit maakt het mogelijk om een geschiedenis bij te houden.  
-git s
-## Componenten
+
+
+### API gateway
+De gateway met Google OAuth2 is een centrale poort die al het verkeer naar de achterliggende microservices beheert.
+
+### Web application (extra)
+
 
 ## Testing (Postman)
 
