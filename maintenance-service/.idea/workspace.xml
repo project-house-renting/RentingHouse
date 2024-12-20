@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2d064ae-165b-4f66-866a-24caf53a2951" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/Dto/HomeRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../application/src/main/resources/static/css/details.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../application/src/main/resources/static/css/homes.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../application/src/main/resources/templates/crud.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/Dto/HomeResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/Dto/HomeResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/controllers/ApplicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/controllers/ApplicationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/services/HomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../application/src/main/java/fact/it/application/services/HomeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application/src/main/resources/static/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application/src/main/resources/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/../application/src/main/resources/templates/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application/src/main/resources/templates/homedetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/../application/src/main/resources/templates/homedetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application/src/main/resources/templates/homes.html" beforeDir="false" afterPath="$PROJECT_DIR$/../application/src/main/resources/templates/homes.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../application/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../application/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../home-service/src/main/java/fact/it/homeservice/dto/HomeResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../home-service/src/main/java/fact/it/homeservice/dto/HomeResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../home-service/src/main/java/fact/it/homeservice/service/HomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../home-service/src/main/java/fact/it/homeservice/service/HomeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b2d064ae-165b-4f66-866a-24caf53a2951" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -113,7 +96,7 @@
       <workItem from="1734439351185" duration="4717000" />
       <workItem from="1734522510123" duration="4551000" />
       <workItem from="1734554000445" duration="1469000" />
-      <workItem from="1734685636403" duration="1317000" />
+      <workItem from="1734685636403" duration="1318000" />
     </task>
     <servers />
   </component>

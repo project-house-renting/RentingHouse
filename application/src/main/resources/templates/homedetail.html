@@ -72,7 +72,7 @@
                     <h3>Contract History</h3>
                     <div th:each="contract : ${contracts}" class="contract-card">
                         <h4>Tenant: <span th:text="${contract.tenant.name}"></span></h4>
-                        <p>Gender: <span th:text="${activeContract.tenant.gender}"></span></p>
+                        <p>Gender: <span th:text="${contract.tenant.gender}"></span></p>
                         <p>Email: <span th:text="${contract.tenant.email}"></span></p>
                         <p><strong>Description:</strong> <span th:text="${contract.tenant.description}"></span></p>
                         <div class="contract-dates">
