@@ -22,22 +22,25 @@ Microservices:
 ![](https://github.com/project-house-renting/RentingHouse/blob/main/images/schema.png)
 
 ### Home Service
+Beheert de huizen.
 
 ### Tenant Service
+Beheert de huurders.
 
 ### Payment Service
+Beheert de maandelijkse betalingen van de huurders.
 
 ### Maintenance Service
+Beheert alle onderhoudsverzoeken. Als er problemen zijn in een woning kan de huurder een onderhoudsverzoek indienen.
 
 ### Contract Service
 Deze service zorgt voor de verbinding tussen de huizen en de huurders. Aangezien een huis meerdere huurders kan hebben, en een huurder meerdere huizen kan huren, hebben we deze service toegevoegd. Dit maakt het mogelijk om een geschiedenis bij te houden.  
 
-
 ### API gateway
-De gateway met Google OAuth2 is een centrale poort die al het verkeer naar de achterliggende microservices beheert.
+De gateway met Google OAuth2 is een centrale poort die al het verkeer naar de achterliggende microservices beheert. Om de applicatie logischer te maken is hier een whitelist op geïmplementeerd. Zonder de whitelist zou iedereen dat zich met google aanmeld alle admin functies kunnen uitvoeren wat de bedoeling is.
 
 ### Web application (extra)
-
+Voor de frontend hebben we het simpel gehouden met een SpringBoot web application met Thymeleaf. Wanneer de beheerders inloggen met google, kunnen ze alle admin functies uitvoeren.
 
 ## Testing (Postman)
 
