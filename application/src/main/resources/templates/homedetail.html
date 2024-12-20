@@ -2,75 +2,92 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="/css/styles.css">
-        <title>Contracten Pagina</title>
+        <link rel="stylesheet" href="/css/details.css">
+        <title>Contract Page</title>
     </head>
 
     <body>
-    <h1>Informatie</h1>
-
-    <div class="contract-details-container">
-
-        <div class="contract-details-container">
-            <!-- Sectie voor de huisinformatie -->
-            <div class="active-contract-card">
-                <h3>Huisinformatie</h3>
-                <p>Bouwjaar: <span th:text="${home.yearOfConstruction}"></span></p>
+        <div class="container">
+            <div>
+                <nav>
+                    <a class="back-button" th:href="@{/admin}">Back to home</a>
+                </nav>
             </div>
 
-            <div class="active-contract-card">
-                <h3>Onderhoudsverzoeken</h3>
-                <ul>
-                    <li th:each="maintenance : ${home.maintenances}">
-                        <p>Description: <span th:text="${maintenance.description}"></span></p>
-                        <p>Date: <span th:text="${maintenance.date}"></span></p>
-                    </li>
-                </ul>
-            </div>
+            <div class="contract-details-container">
+                <div class="active-contract-card">
+                    <h3>House Information</h3>
+                    <p>Year of Construction: <span th:text="${home.yearOfConstruction}"></span></p>
+                </div>
 
-            <!-- Sectie voor de actieve huurder -->
-            <div class="active-contract-card">
-                <h3>Actieve huurder</h3>
-                <div th:if="${activeContract != null}" class="contract-card">
-                    <h4>Naam: <span th:text="${activeContract.tenant.name}"></span></h4>
-                    <p>Email: <span th:text="${activeContract.tenant.email}"></span></p>
-                    <p>Description: <span th:text="${activeContract.tenant.description}"></span></p>
-                    <p>Startdatum: <span th:text="${activeContract.startDate}"></span></p>
-                    <p>Einddatum: <span th:text="${activeContract.endDate}"></span></p>
-
-                    <h4>Betalingen:</h4>
-                    <ul>
-                        <li th:each="payment : ${activeContract.payments}">
-                            <div>
-                                <p><strong>Bedrag:</strong> <span th:text="${payment.amount}"></span> EUR</p>
-                                <p><strong>Betaalmethode:</strong> <span th:text="${payment.method}"></span></p>
-                                <p><strong>Datum:</strong> <span th:text="${payment.date}"></span></p>
-                            </div>
+                <div class="active-contract-card">
+                    <h3>Maintenance Requests</h3>
+                    <ul th:if="${!home.maintenances.isEmpty()}">
+                        <li th:each="maintenance : ${home.maintenances}">
+                            <p><strong>Description:</strong> <span th:text="${maintenance.description}"></span></p>
+                            <p><strong>Date:</strong> <span th:text="${maintenance.date}"></span></p>
+                            <p>
+                                <strong>Urgency:</strong>
+                                <span th:text="${maintenance.urgency}"
+                                      th:class="${maintenance.urgency == 'high' ? 'high-urgency' : (maintenance.urgency == 'medium' ? 'medium-urgency' : 'low-urgency')}">
+                                </span>
+                            </p>
                         </li>
                     </ul>
+
+                    <div th:if="${activeContract == null}" class="no-maintenances-message">
+                        <p><span>There are no maintenance requests.</span></p>
+                    </div>
                 </div>
 
-                <!-- Bericht als er geen actieve huurder is -->
-                <div th:if="${activeContract == null}" class="no-active-contract-message">
-                    <p><span th:text="${message}"></span></p>
+                <div class="active-contract-card">
+                    <h3>Active Tenant</h3>
+                    <div th:if="${activeContract != null}" class="contract-card">
+                        <h4>Name: <span th:text="${activeContract.tenant.name}"></span></h4>
+                        <p>Gender: <span th:text="${activeContract.tenant.gender}"></span></p>
+                        <p>Email: <span th:text="${activeContract.tenant.email}"></span></p>
+                        <p><strong>Description:</strong> <span th:text="${activeContract.tenant.description}"></span></p>
+                        <p><strong>Start Date:</strong> <span th:text="${activeContract.startDate}"></span></p>
+                        <p><strong>End Date:</strong> <span th:text="${activeContract.endDate}"></span></p>
+
+                        <h4>Payments:</h4>
+                        <ul>
+                            <li th:each="payment : ${activeContract.payments}">
+                                <div>
+                                    <p><strong>Amount:</strong> <span th:text="${payment.amount}"></span> EUR</p>
+                                    <p><strong>Payment Method:</strong> <span th:text="${payment.method}"></span></p>
+                                    <p><strong>Transaction Id:</strong> <span th:text="${payment.transactionId}"></span></p>
+                                    <p><strong>Date:</strong> <span th:text="${payment.date}"></span></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div th:if="${activeContract == null}" class="no-active-contract-message">
+                        <p><span>There is no active tenant.</span></p>
+                    </div>
+                </div>
+
+                <div class="contract-history-card">
+                    <h3>Contract History</h3>
+                    <div th:each="contract : ${contracts}" class="contract-card">
+                        <h4>Tenant: <span th:text="${contract.tenant.name}"></span></h4>
+                        <p>Gender: <span th:text="${activeContract.tenant.gender}"></span></p>
+                        <p>Email: <span th:text="${contract.tenant.email}"></span></p>
+                        <p><strong>Description:</strong> <span th:text="${contract.tenant.description}"></span></p>
+                        <div class="contract-dates">
+                            <div class="date-item">
+                                <p><strong>Start Date:</strong></p>
+                                <span th:text="${contract.startDate}"></span>
+                            </div>
+                            <div class="date-item">
+                                <p><strong>End Date:</strong></p>
+                                <span th:text="${contract.endDate}"></span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="contract-history-card">
-            <h3>Contractgeschiedenis</h3>
-
-            <!-- Loop over alle contracten -->
-            <div th:each="contract : ${contracts}" class="contract-card">
-                <h4>Huurder: <span th:text="${contract.tenant.name}"></span></h4>
-                <p>Email: <span th:text="${contract.tenant.email}"></span></p>
-                <p>Description: <span th:text="${contract.tenant.description}"></span></p>
-                <p>Startdatum: <span th:text="${contract.startDate}"></span></p>
-                <p>Einddatum: <span th:text="${contract.endDate}"></span></p>
-            </div>
-        </div>
-    </div>
-
-    <a th:href="@{/admin}">Terug naar Index</a>
     </body>
 </html>

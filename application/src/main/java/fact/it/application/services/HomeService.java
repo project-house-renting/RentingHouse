@@ -1,6 +1,7 @@
 package fact.it.application.services;
 
 
+import fact.it.application.Dto.HomeRequest;
 import fact.it.application.Dto.HomeResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,6 +49,46 @@ public class HomeService {
 
         return webClient.get()
                 .uri("http://" + baseUrl + "/home/" + id + "/details")
+                .retrieve()
+                .bodyToMono(HomeResponse.class)
+                .block();
+    }
+
+    public void deleteHome(String id, HttpSession session) {
+        WebClient webClient = WebClient.builder()
+                .defaultHeader("Authorization", "Bearer " + session.getAttribute("accessToken"))
+                .build();
+
+        webClient.delete()
+                .uri("http://" + baseUrl + "/home/" + id)
+                .retrieve()
+                .toBodilessEntity()
+                .block();
+    }
+
+    public void createHome(HomeRequest homeResponse, HttpSession session) {
+        WebClient webClient = WebClient.builder()
+                .defaultHeader("Authorization", "Bearer " + session.getAttribute("accessToken"))
+                .build();
+
+        webClient.post()
+                .uri("http://" + baseUrl + "/home")
+                .header("Authorization", "Bearer " + session.getAttribute("accessToken"))
+                .bodyValue(homeResponse)
+                .retrieve()
+                .bodyToMono(HomeRequest.class)
+                .block();
+    }
+
+    public void updateHome(String id, HomeResponse homeResponse, HttpSession session) {
+        WebClient webClient = WebClient.builder()
+                .defaultHeader("Authorization", "Bearer " + session.getAttribute("accessToken"))
+                .build();
+
+        webClient.put()
+                .uri("http://" + baseUrl + "/home/{id}", id)
+                .header("Authorization", "Bearer " + session.getAttribute("accessToken"))
+                .bodyValue(homeResponse)
                 .retrieve()
                 .bodyToMono(HomeResponse.class)
                 .block();

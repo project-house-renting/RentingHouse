@@ -18,5 +18,6 @@ public class HomeResponse {
     private String description;
     private float rentalPrice;
     private String yearOfConstruction;
+    private boolean isRentable;
     private List<MaintenanceResponse> maintenances;
 }

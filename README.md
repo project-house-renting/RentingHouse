@@ -23,7 +23,6 @@ Microservices:
 
 ### Home Service
 
-
 ### Tenant Service
 
 ### Payment Service

@@ -60,7 +60,7 @@ public class HomeService {
                             .id("home3")
                             .address("Steentjesstraat 7")
                             .yearOfConstruction("2004")
-                            .type("rijhuis")
+                            .type("terraced house")
                             .isRentable(true)
                             .description("A charming row house with a small front yard.")
                             .rentalPrice(950.00f)
@@ -91,7 +91,9 @@ public class HomeService {
     public void addHome(HomeRequest homeRequest) {
         Home home = Home.builder()
                 .type(homeRequest.getType())
+                .description(homeRequest.getDescription())
                 .yearOfConstruction(homeRequest.getYearOfConstruction())
+                .rentalPrice(homeRequest.getRentalPrice())
                 .address(homeRequest.getAddress())
                 .isRentable(true)
                 .build();
@@ -107,6 +109,8 @@ public class HomeService {
             home.setType(home.getType());
             home.setYearOfConstruction(homeRequest.getYearOfConstruction());
             home.setRentable(homeRequest.isRentable());
+            home.setDescription(homeRequest.getDescription());
+            home.setRentalPrice(homeRequest.getRentalPrice());
             homeRepository.save(home);
         }
     }
@@ -140,6 +144,7 @@ public class HomeService {
                 .description(home.getDescription())
                 .type(home.getType())
                 .rentalPrice(home.getRentalPrice())
+                .isRentable(home.isRentable())
                 .build();
     }
 }
