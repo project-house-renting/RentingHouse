@@ -68,6 +68,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MaintenanceServiceUnitTest" />
+        <item itemvalue="JUnit.MaintenanceServiceUnitTest.testFindMaintenancesByHomeId" />
+        <item itemvalue="JUnit.MaintenanceServiceUnitTest.testGetAllMaintenances" />
+        <item itemvalue="JUnit.MaintenanceServiceUnitTest.testCreateMaintenance" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
