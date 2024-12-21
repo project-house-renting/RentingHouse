@@ -5,7 +5,7 @@ on: push
 jobs:
   tenantservice:
     runs-on: ubuntu-latest
-    name: Java 17 build, deliver tenant-service container
+    name: Java 17 build, test and deliver tenant-service container
     steps:
       - name: check out repository
         uses: actions/checkout@v3
@@ -19,7 +19,7 @@ jobs:
 
       - name: Build and package project
         working-directory: ./tenant-service
-        run: mvn package -B -DskipTests
+        run: mvn package -B
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
@@ -32,7 +32,7 @@ jobs:
 
   homeservice:
     runs-on: ubuntu-latest
-    name: Java 17 build, deliver home-service container
+    name: Java 17 build, test and deliver home-service container
     steps:
       - name: check out repository
         uses: actions/checkout@v3
@@ -46,7 +46,7 @@ jobs:
 
       - name: Build and package project
         working-directory: ./home-service
-        run: mvn package -B -DskipTests
+        run: mvn package -B
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
@@ -59,7 +59,7 @@ jobs:
 
   contractservice:
     runs-on: ubuntu-latest
-    name: Java 17 build, deliver contract-service container
+    name: Java 17 build, test and deliver contract-service container
     steps:
       - name: check out repository
         uses: actions/checkout@v3
@@ -73,7 +73,7 @@ jobs:
 
       - name: Build and package project
         working-directory: ./contract-service
-        run: mvn package -B -DskipTests
+        run: mvn package -B
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
@@ -86,7 +86,7 @@ jobs:
 
   maintenanceservice:
     runs-on: ubuntu-latest
-    name: Java 17 build, deliver maintenance-service container
+    name: Java 17 build, test and deliver maintenance-service container
     steps:
       - name: check out repository
         uses: actions/checkout@v3
@@ -100,7 +100,7 @@ jobs:
 
       - name: Build and package project
         working-directory: ./maintenance-service
-        run: mvn package -B -DskipTests
+        run: mvn package -B
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
@@ -113,7 +113,7 @@ jobs:
 
   paymentservice:
     runs-on: ubuntu-latest
-    name: Java 17 build, deliver payment-service container
+    name: Java 17 build, test and deliver payment-service container
     steps:
       - name: check out repository
         uses: actions/checkout@v3
@@ -127,7 +127,7 @@ jobs:
 
       - name: Build and package project
         working-directory: ./payment-service
-        run: mvn package -B -DskipTests
+        run: mvn package -B
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
