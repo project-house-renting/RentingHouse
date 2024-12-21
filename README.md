@@ -24,11 +24,34 @@ Microservices:
 ### Home Service
 Beheert de huizen.
 
+Hier komen alle huizen in die toegevoegd worden aan de applicatie met info zoals:
+- adres
+- type woning
+- beschrijving van de woning
+- de huur prijs
+- bouw jaar
+- indient er onderhoudsverzoeken zijn worden die via een id hier ook bijgehouden
+
+
 ### Tenant Service
 Beheert de huurders.
 
+Hier komen de huurders in met info zoals:
+- naam
+- email
+- een beschrijving over de persoon
+- geslacht
+
 ### Payment Service
 Beheert de maandelijkse betalingen van de huurders.
+
+Hier worden de maandelijkse betalingen bijgehouden met info zoals:
+- bedrag
+- methode
+- transactie id
+- datum
+- de persoon
+- het gehuurde huis
 
 ### Maintenance Service
 Beheert alle onderhoudsverzoeken. Als er problemen zijn in een woning kan de huurder een onderhoudsverzoek indienen.
