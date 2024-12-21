@@ -52,11 +52,6 @@ public class MaintenanceService {
         return maintenances.stream().map(this::mapToMaintenanceResponse).toList();
     }
 
-    public MaintenanceResponse getMaintenanceById(Long id) {
-        Maintenance maintenance = maintenanceRepository.findMaintenanceById(id);
-        return mapToMaintenanceResponse(maintenance);
-    }
-
     public List<MaintenanceResponse> findMaintenancesByHomeId(String id) {
         List<Maintenance> maintenances = maintenanceRepository.findMaintenanceByHomeId(id);
         return maintenances.stream().map(this::mapToMaintenanceResponse).toList();

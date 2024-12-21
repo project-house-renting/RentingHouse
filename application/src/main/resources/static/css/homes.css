@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+.homes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 60px auto;
+    gap: 20px;
+}
+.card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    padding: 15px;
+    text-align: left;
+    transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+.card h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+.card p {
+    margin: 5px 0;
+    color: #555;
+}
+a {
+    display: inline-block;
+    margin: 20px auto;
+    text-align: center;
+    text-decoration: none;
+    background: #3498db;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+a:hover {
+    background: #2980b9;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    margin-bottom: 10px;
+}
+nav h1 {
+    flex-grow: 1; /* Zorg ervoor dat de h1 ruimte krijgt om in het midden te staan */
+    text-align: center; /* Zorg ervoor dat de titel gecentreerd is */
+    margin: 0;
+    font-size: 1.5em; /* Pas de grootte aan naar wens */
+}
+
+nav .back-button {
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    position: relative;
+    left: 0;
+}
+
+nav .back-button:hover {
+    background-color: #0056b3;
+}

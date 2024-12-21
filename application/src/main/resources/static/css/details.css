@@ -1,0 +1,153 @@
+body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    padding: 0;
+    margin-top: 60px; /* Ruimte onder de navigatiebalk */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Zorg ervoor dat de body de volledige schermhoogte gebruikt */
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px; /* Beperkt de maximale breedte van de inhoud */
+    width: 100%; /* Zorgt dat de container zich uitstrekt tot de volledige breedte */
+}
+
+h3, h4 {
+    margin: 10px 0;
+    color: #2c3e50;
+}
+p {
+    margin: 5px 0;
+    color: #555;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    margin-bottom: 10px;
+}
+
+nav .back-button {
+    text-decoration: none;
+    background-color: #007bff; /* Blauw */
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s;
+    position: relative;
+    left: 0; /* Plaatst de knop helemaal links */
+}
+
+nav .back-button:hover {
+    background-color: #0056b3; /* Donkerder blauw bij hover */
+}
+
+.contract-details-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Centreert de kaarten horizontaal */
+    align-items: flex-start; /* Zorgt dat de kaarten bovenaan beginnen */
+    width: 100%; /* Laat de container zich aanpassen aan de volledige breedte */
+    margin-top: 20px; /* Voegt ruimte toe tussen de nav en de kaarten */
+}
+.active-contract-card,
+.contract-history-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1 1 calc(50% - 10px); /* Zorgt dat de kaarten 50% breedte hebben met ruimte ertussen */
+    max-width: 600px; /* Beperkt de maximale breedte van een kaart */
+    min-width: 300px; /* Voorkomt dat kaarten te smal worden */
+}
+.active-contract-card ul, .contract-history-card ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+.active-contract-card ul li, .contract-history-card ul li {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.contract-card {
+    margin: 15px 0;
+    padding: 10px;
+    border-top: 2px solid #3498db;
+    background-color: #fefefe;
+}
+.no-active-contract-message {
+    padding: 15px;
+    background: #ffe4e4;
+    border: 1px solid #f5c2c2;
+    color: #c0392b;
+    text-align: center;
+    border-radius: 5px;
+}
+.no-maintenances-message {
+    padding: 15px;
+    background: #e4ffe4;
+    border: 1px solid #c2f5c2;
+    color: #2b8c39;
+    text-align: center;
+    border-radius: 5px;
+}
+.contract-dates {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f0f8ff; /* Lichtblauwe achtergrond voor visuele nadruk */
+    border: 1px solid #87ceeb; /* Rand in blauwe kleur */
+    border-radius: 5px;
+}
+.date-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.date-item p {
+    font-weight: bold;
+    margin: 0;
+    color: #2c3e50;
+}
+
+.date-item span {
+    font-size: 1.1em;
+    color: #555;
+}
+
+.back-button:hover {
+    background-color: #0056b3; /* Donkerder blauw */
+}
+.high-urgency {
+    color: #e74c3c; /* Rood voor hoge urgentie */
+    font-weight: bold;
+}
+
+.medium-urgency {
+    color: #f39c12; /* Geel voor medium urgentie */
+}
+
+.low-urgency {
+    color: #2ecc71; /* Groen voor lage urgentie */
+}
+

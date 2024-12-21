@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <form th:action="@{${home.id} == null ? '/home/create' : '/home/' + ${home.id} + '/update'}" method="post">
+        <div>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" th:value="${home.address}" required>
+        </div>
+        <div>
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type" th:value="${home.type}" required>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" th:value="${home.description}" required>
+        </div>
+        <div>
+            <label for="rentalPrice">Rental Price:</label>
+            <input type="number" step="0.01" id="rentalPrice" name="rentalPrice" th:value="${home.rentalPrice}" required>
+        </div>
+        <div>
+            <label for="yearOfConstruction">Year of Construction:</label>
+            <input type="text" id="yearOfConstruction" name="yearOfConstruction" th:value="${home.yearOfConstruction}" required>
+        </div>
+        <div>
+            <label for="isRentable">Is Rentable:</label>
+            <input type="checkbox" id="isRentable" name="isRentable" th:value="${home.isRentable}" th:checked="${home.isRentable}">
+        </div>
+
+        <div>
+            <input type="hidden" name="id" th:value="${home.id}">
+        </div>
+
+        <div>
+            <button type="submit" th:text="${home.id == null ? 'Create Home' : 'Update Home'}"></button>
+        </div>
+    </form>
+</body>
+</html>

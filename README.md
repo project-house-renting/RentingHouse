@@ -18,21 +18,64 @@ Microservices:
 -   Betaling beheer
 -   Contract beheer
 
-## Microservices
+## Componenten
+![](https://github.com/project-house-renting/RentingHouse/blob/main/images/schema.png)
 
 ### Home Service
+Beheert de huizen.
+
+De woningen worden bijgehouden met volgende info:
+- adres
+- type woning
+- beschrijving van de woning
+- de huur prijs
+- bouw jaar
+- indient er onderhoudsverzoeken zijn worden die via een id hier ook bijgehouden
+
 
 ### Tenant Service
+Beheert de huurders.
+
+De huurders worden bijgehouden met volgende info:
+- naam
+- email
+- een beschrijving over de persoon
+- geslacht
 
 ### Payment Service
+Beheert de maandelijkse betalingen van de huurders.
+
+De maandelijkse betalingen worden bijgehouden met volgende info:
+- bedrag
+- methode
+- transactie id
+- datum
+- de persoon
+- het gehuurde huis
 
 ### Maintenance Service
+Beheert alle onderhoudsverzoeken. Als er problemen zijn in een woning kan de huurder een onderhoudsverzoek indienen.
+
+De onderhoudsverzoeken worden bijgehouden met volgende info:
+- beschrijving van wat er stuk is
+- Datum
+- urgency
+- woning
 
 ### Contract Service
+Deze service zorgt voor de verbinding tussen de huizen en de huurders. Aangezien een huis meerdere huurders kan hebben, en een huurder meerdere huizen kan huren, hebben we deze service toegevoegd. Dit maakt het mogelijk om een geschiedenis bij te houden.
 
-Deze service zorgt voor de verbinding tussen de huizen en de huurders. Aangezien een huis meerdere huurders kan hebben, en een huurder meerdere huizen kan huren, hebben we deze service toegevoegd. Dit maakt het mogelijk om een geschiedenis bij te houden.  
-git s
-## Componenten
+Per contract houden we dan volgende info bij:
+- woning
+- huurder
+- start datum
+- eind datum  
+
+### API gateway
+De gateway met Google OAuth2 is een centrale poort die al het verkeer naar de achterliggende microservices beheert. Om de applicatie logischer te maken is hier een whitelist op geïmplementeerd. Zonder de whitelist zou iedereen dat zich met google aanmeld alle admin functies kunnen uitvoeren wat de bedoeling is.
+
+### Web application (extra)
+Voor de frontend hebben we het simpel gehouden met een SpringBoot web application met Thymeleaf. Wanneer de beheerders inloggen met google, kunnen ze alle admin functies uitvoeren.
 
 ## Testing (Postman)
 

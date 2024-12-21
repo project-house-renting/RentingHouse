@@ -1,20 +1,20 @@
 package fact.it.application.Dto;
 
-import lombok.*;
 
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class HomeResponse {
-    private String id;
+public class HomeRequest {
     private String address;
     private String type;
+    private String yearOfConstruction;
     private String description;
     private float rentalPrice;
-    private String yearOfConstruction;
     private boolean isRentable;
-    private List<MaintenanceResponse> maintenances;
 }
