@@ -24,7 +24,7 @@ Microservices:
 ### Home Service
 Beheert de huizen.
 
-Hier komen alle huizen in die toegevoegd worden aan de applicatie met info zoals:
+De woningen worden bijgehouden met volgende info:
 - adres
 - type woning
 - beschrijving van de woning
@@ -36,7 +36,7 @@ Hier komen alle huizen in die toegevoegd worden aan de applicatie met info zoals
 ### Tenant Service
 Beheert de huurders.
 
-Hier komen de huurders in met info zoals:
+De huurders worden bijgehouden met volgende info:
 - naam
 - email
 - een beschrijving over de persoon
@@ -45,7 +45,7 @@ Hier komen de huurders in met info zoals:
 ### Payment Service
 Beheert de maandelijkse betalingen van de huurders.
 
-Hier worden de maandelijkse betalingen bijgehouden met info zoals:
+De maandelijkse betalingen worden bijgehouden met volgende info:
 - bedrag
 - methode
 - transactie id
@@ -56,8 +56,20 @@ Hier worden de maandelijkse betalingen bijgehouden met info zoals:
 ### Maintenance Service
 Beheert alle onderhoudsverzoeken. Als er problemen zijn in een woning kan de huurder een onderhoudsverzoek indienen.
 
+De onderhoudsverzoeken worden bijgehouden met volgende info:
+- beschrijving van wat er stuk is
+- Datum
+- urgency
+- woning
+
 ### Contract Service
-Deze service zorgt voor de verbinding tussen de huizen en de huurders. Aangezien een huis meerdere huurders kan hebben, en een huurder meerdere huizen kan huren, hebben we deze service toegevoegd. Dit maakt het mogelijk om een geschiedenis bij te houden.  
+Deze service zorgt voor de verbinding tussen de huizen en de huurders. Aangezien een huis meerdere huurders kan hebben, en een huurder meerdere huizen kan huren, hebben we deze service toegevoegd. Dit maakt het mogelijk om een geschiedenis bij te houden.
+
+Per contract houden we dan volgende info bij:
+- woning
+- huurder
+- start datum
+- eind datum  
 
 ### API gateway
 De gateway met Google OAuth2 is een centrale poort die al het verkeer naar de achterliggende microservices beheert. Om de applicatie logischer te maken is hier een whitelist op geïmplementeerd. Zonder de whitelist zou iedereen dat zich met google aanmeld alle admin functies kunnen uitvoeren wat de bedoeling is.
