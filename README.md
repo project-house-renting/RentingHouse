@@ -1,4 +1,4 @@
-# projectAdvancedProgrammingTopics
+# project Advanced Programming Topics
 
 | Team leden |
 | --------- |
