@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2d064ae-165b-4f66-866a-24caf53a2951" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../home-service/src/test/java/fact/it/homeservice/HomeServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../home-service/src/test/java/fact/it/homeservice/HomeServiceUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="b2d064ae-165b-4f66-866a-24caf53a2951" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,9 +50,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.MaintenanceServiceApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "sj-tests",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Sande/Documenten/jaar 3/projecten/RentingHouse/payment-service",
+    "last_opened_file_path": "C:/Users/Sande/Documenten/jaar 3/projecten/RentingHouse/maintenance-service",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -102,6 +99,7 @@
       <workItem from="1734554000445" duration="1469000" />
       <workItem from="1734685636403" duration="1318000" />
       <workItem from="1734794696289" duration="74000" />
+      <workItem from="1734798869063" duration="12000" />
     </task>
     <servers />
   </component>

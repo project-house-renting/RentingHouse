@@ -8,27 +8,23 @@ import fact.it.contractservice.repository.ContractRepository;
 import fact.it.contractservice.service.ContractService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
-
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.function.Function;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class ContractServiceApplicationTests {
-
     @InjectMocks
     private ContractService contractService;
 
@@ -131,7 +127,7 @@ class ContractServiceApplicationTests {
         when(responseSpec.bodyToMono(PaymentResponse[].class)).thenReturn(Mono.just(new PaymentResponse[]{mockPayment1, mockPayment2}));
 
         // Act
-        List<ContractResponse> contractResponses = contractService.getAllContractsByHomeId(homeId);
+        ContractResponse contractResponses = contractService.getCurrentContractByHomeId(homeId);
 
         // Assert
         assertNotNull(contractResponses);
