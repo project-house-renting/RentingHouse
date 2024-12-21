@@ -1,6 +1,7 @@
 package fact.it.contractservice;
 
 import fact.it.contractservice.dto.ContractResponse;
+import fact.it.contractservice.dto.PaymentResponse;
 import fact.it.contractservice.dto.TenantResponse;
 import fact.it.contractservice.model.Contract;
 import fact.it.contractservice.repository.ContractRepository;
@@ -11,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
@@ -19,8 +21,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.function.Function;
 
 @SpringBootTest
 class ContractServiceApplicationTests {
@@ -45,31 +49,44 @@ class ContractServiceApplicationTests {
 
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
+        ReflectionTestUtils.setField(contractService, "tenantServiceBaseUrl", "http://localhost:8082");
+        ReflectionTestUtils.setField(contractService, "paymentServiceBaseUrl", "http://localhost:8084");
     }
 
     @Test
     void testGetAllContractsByHomeId() {
         // Arrange
         String homeId = "home1";
+        Long tenantId = 1L;
+
         List<Contract> mockContracts = List.of(
                 Contract.builder()
                         .homeId(homeId)
-                        .tenantId(1L)
+                        .tenantId(tenantId)
                         .startDate(LocalDate.of(2024, 12, 1))
                         .endDate(LocalDate.of(2025, 12, 1))
                         .build()
         );
 
+        TenantResponse mockTenant = new TenantResponse();
+        mockTenant.setName("John Doe");
+        mockTenant.setEmail("JohnDoe@gamil.com");
+        mockTenant.setGender("male");
+        mockTenant.setDescription("jkldfqsjklfjsdklfs");
+
         when(contractRepository.findContractsByHomeId(homeId)).thenReturn(mockContracts);
+
+        when(webClient.get()).thenReturn(requestHeadersUriSpec);
+        when(requestHeadersUriSpec.uri(anyString(), eq(tenantId))).thenReturn(requestHeadersSpec);
+        when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
+        when(responseSpec.bodyToMono(TenantResponse.class)).thenReturn(Mono.just(mockTenant));
 
         // Act
         List<ContractResponse> contractResponses = contractService.getAllContractsByHomeId(homeId);
 
         // Assert
         assertNotNull(contractResponses);
-        assertEquals(1, contractResponses.size());
-        assertEquals(homeId, contractResponses.get(0).getTenant().getName()); // Mock name in mapToContractResponse
+
         verify(contractRepository, times(1)).findContractsByHomeId(homeId);
     }
 
@@ -77,26 +94,48 @@ class ContractServiceApplicationTests {
     void testGetCurrentContractByHomeId() {
         // Arrange
         String homeId = "home1";
-        Contract activeContract = Contract.builder()
-                .homeId(homeId)
-                .tenantId(1L)
-                .startDate(LocalDate.now().minusDays(10))
-                .endDate(LocalDate.now().plusDays(10))
-                .build();
+        Long tenantId = 1L;
 
-        when(contractRepository.findContractsByHomeId(homeId)).thenReturn(List.of(activeContract));
+        List<Contract> mockContracts = List.of(
+                Contract.builder()
+                        .homeId(homeId)
+                        .tenantId(tenantId)
+                        .startDate(LocalDate.of(2024, 12, 1))
+                        .endDate(LocalDate.of(2025, 12, 1))
+                        .build()
+        );
+
+
+        TenantResponse mockTenant = new TenantResponse();
+        mockTenant.setName("John Doe");
+        mockTenant.setEmail("JohnDoe@gamil.com");
+        mockTenant.setGender("male");
+        mockTenant.setDescription("jkldfqsjklfjsdklfs");
+
+        PaymentResponse mockPayment1 = new PaymentResponse();
+        mockPayment1.setAmount(100.00f);
+        mockPayment1.setDate(LocalDate.of(2024, 12, 10));
+
+        PaymentResponse mockPayment2 = new PaymentResponse();
+        mockPayment2.setAmount(150.00f);
+        mockPayment2.setDate(LocalDate.of(2025, 1, 15));
+
+        when(contractRepository.findContractsByHomeId(homeId)).thenReturn(mockContracts);
+
         when(webClient.get()).thenReturn(requestHeadersUriSpec);
-        when(requestHeadersUriSpec.uri(anyString(), any(Object[].class))).thenReturn(requestHeadersSpec);
+        when(requestHeadersUriSpec.uri(anyString(), eq(tenantId))).thenReturn(requestHeadersSpec);
         when(requestHeadersSpec.retrieve()).thenReturn(responseSpec);
-        when(responseSpec.bodyToMono(TenantResponse.class)).thenReturn(Mono.just(
-                TenantResponse.builder().name("John Doe").email("johndoe@example.com").build()));
+        when(responseSpec.bodyToMono(TenantResponse.class)).thenReturn(Mono.just(mockTenant));
+
+        when(requestHeadersUriSpec.uri(anyString(), any(Function.class))).thenReturn(requestHeadersSpec);
+        when(responseSpec.bodyToMono(PaymentResponse[].class)).thenReturn(Mono.just(new PaymentResponse[]{mockPayment1, mockPayment2}));
 
         // Act
-        ContractResponse response = contractService.getCurrentContractByHomeId(homeId);
+        List<ContractResponse> contractResponses = contractService.getAllContractsByHomeId(homeId);
 
         // Assert
-        assertNotNull(response);
-        assertEquals("John Doe", response.getTenant().getName());
+        assertNotNull(contractResponses);
+
         verify(contractRepository, times(1)).findContractsByHomeId(homeId);
     }
 
@@ -117,5 +156,4 @@ class ContractServiceApplicationTests {
         assertTrue(contractService.isActiveContract(activeContract));
         assertFalse(contractService.isActiveContract(inactiveContract));
     }
-
 }

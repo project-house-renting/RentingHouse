@@ -12,14 +12,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 
+import java.time.LocalDate;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -47,14 +46,10 @@ public class HomeServiceUnitTest {
     @Mock
     private WebClient.ResponseSpec responseSpec;
 
-    @Value("${maintenanceService.baseurl}")
-    private String maintenanceServiceBaseUrl;
-
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.openMocks(this);
+        ReflectionTestUtils.setField(homeService, "maintenanceServiceBaseUrl", "http://localhost:8083");
     }
-
 
     @Test
     void testGetAllHomes() {
@@ -96,6 +91,12 @@ public class HomeServiceUnitTest {
         // Arrange
         String homeId = "home1";
         Home home = Home.builder().id(homeId).address("Oude Veerlebaan 12").build();
+
+        MaintenanceResponse maintenanceResponse = new MaintenanceResponse();
+        maintenanceResponse.setDescription("Fixing the leaking roof");
+        maintenanceResponse.setDate(LocalDate.of(2024, 12, 25)); // Random datum
+        maintenanceResponse.setUrgency("High");
+
         when(homeRepository.findHomeById(homeId)).thenReturn(home);
 
         when(webClient.get()).thenReturn(requestHeadersUriSpec);
@@ -111,7 +112,6 @@ public class HomeServiceUnitTest {
         assertEquals(homeId, homeResponse.getId());
         verify(homeRepository, times(1)).findHomeById(homeId);
     }
-
 
     @Test
     public void testAddHome() {
