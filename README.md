@@ -19,8 +19,8 @@ Microservices:
 -   Contract beheer
 
 ## Componenten
-[!IMPORTANT]
-In de video zit een fout schema dat gebaseerd is op Kubernetes.
+> [!IMPORTANT]
+> In de video zit een fout schema dat gebaseerd is op Kubernetes.
 
 ![](https://github.com/project-house-renting/RentingHouse/blob/main/images/schema.png)
 
