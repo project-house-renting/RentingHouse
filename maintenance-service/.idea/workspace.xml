@@ -5,9 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2d064ae-165b-4f66-866a-24caf53a2951" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../contract-service/src/test/java/fact/it/contractservice/ContractServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../contract-service/src/test/java/fact/it/contractservice/ContractServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../home-service/src/test/java/fact/it/homeservice/HomeServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../home-service/src/test/java/fact/it/homeservice/HomeServiceUnitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fact/it/maintenanceservice/service/MaintenanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fact/it/maintenanceservice/service/MaintenanceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/fact/it/maintenanceservice/MaintenanceServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fact/it/maintenanceservice/MaintenanceServiceUnitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../payment-service/src/test/java/fact/it/paymentservice/PaymentServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/test/java/fact/it/paymentservice/PaymentServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenant-service/src/test/java/fact/it/tenantservice/TenantServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenant-service/src/test/java/fact/it/tenantservice/TenantServiceUnitTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +61,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.MaintenanceServiceApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "CV-UnitTests",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/school/jaar_3/sem1/Advanced programming topics/project/RentingHouse/payment-service",
     "node.js.detected.package.eslint": "true",
@@ -177,7 +181,7 @@
       <workItem from="1734554000445" duration="874000" />
       <workItem from="1734557031888" duration="132000" />
       <workItem from="1734557803933" duration="4298000" />
-      <workItem from="1734787253035" duration="943000" />
+      <workItem from="1734787253035" duration="1713000" />
     </task>
     <servers />
   </component>

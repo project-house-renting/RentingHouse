@@ -29,7 +29,7 @@ public class MaintenanceServiceUnitTest {
 
 
     @Test
-    public void testCreateMaintenance(){
+    public void testAddMaintenance(){
         // Arrange
         MaintenanceRequest maintenance = new MaintenanceRequest();
         maintenance.setDescription("licht kapot in de woonkamer");

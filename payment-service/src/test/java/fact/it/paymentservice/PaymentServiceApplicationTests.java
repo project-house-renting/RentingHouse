@@ -2,6 +2,7 @@ package fact.it.paymentservice;
 
 import fact.it.paymentservice.controller.PaymentController;
 import fact.it.paymentservice.dto.PaymentResponse;
+import fact.it.paymentservice.model.Payment;
 import fact.it.paymentservice.repository.PaymentRepository;
 import fact.it.paymentservice.service.PaymentService;
 import org.junit.jupiter.api.Test;
@@ -21,13 +22,10 @@ import static org.mockito.Mockito.*;
 class PaymentServiceApplicationTests {
 
     @InjectMocks
-    private PaymentService paymentService;
-
-    @Mock
-    private PaymentRepository paymentRepository;
-
-    @Mock
     private PaymentController paymentController;
+
+    @Mock
+    private PaymentService paymentService;
 
 
 
@@ -37,12 +35,12 @@ class PaymentServiceApplicationTests {
         Long tenantId = 1L;
         String homeId = "home1";
 
-        List<PaymentResponse> mockResponses = List.of(
-                new PaymentResponse(tenantId, homeId,  LocalDate.of(2024, 12, 20), ),
-                new PaymentResponse(tenantId, homeId, LocalDate.of(2024, 11, 15), )
+        List<PaymentResponse> paymentResponses = List.of(
+                new PaymentResponse(500, "Credit card",  LocalDate.of(2024, 12, 20), "TXN-298765QLSD7831"),
+                new PaymentResponse(300, "Cash", LocalDate.of(2024, 11, 15), "TXN-438190ZKGH1245")
         );
 
-        when(paymentService.getAllPaymentsFromTenant(tenantId, homeId)).thenReturn(mockResponses);
+        when(paymentService.getAllPaymentsFromTenant(tenantId, homeId)).thenReturn(paymentResponses);
 
         // Act
         List<PaymentResponse> responses = paymentController.getAllPaymentsFromTenant(tenantId, homeId);
