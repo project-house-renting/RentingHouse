@@ -3,48 +3,30 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="/css/homes.css">
     <title>Admin</title>
-    <style>
-        /* Simpele styling voor de kaartjes */
-        .card {
-            border: 1px solid #ccc;
-            padding: 20px;
-            margin: 10px;
-            width: 250px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-            vertical-align: top;
-            border-radius: 8px;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            margin: 0;
-            font-size: 1.2em;
-            color: #333;
-        }
-
-        .card p {
-            margin: 5px 0;
-            font-size: 1em;
-            color: #666;
-        }
-    </style>
 </head>
 
 <body>
-    <h1>Dashboard</h1>
+    <div>
+        <nav>
+            <a th:href="@{/}">Back to home</a>
+            <a th:href="@{/crud/create}">Create</a>
+        </nav>
+    </div>
 
     <div class="homes-container">
         <div th:each="home : ${homes}" class="card">
             <h3 th:text="${home.address}"></h3>
+            <p>Address: <span th:text="${home.address}"></span></p>
             <p>Type: <span th:text="${home.type}"></span></p>
-            <p>Bouwjaar: <span th:text="${home.yearOfConstruction}"></span></p>
-            <a th:href="@{/homes/{id}(id=${home.id})}">Bekijk details</a>
+            <p>Description: <span th:text="${home.description}"></span></p>
+            <p>Rental price: <span th:text="${home.rentalPrice}"></span> €/month</p>
+            <div class="buttons">
+                <a th:href="@{/home/{id}(id=${home.id})}">View details</a>
+                <a th:href="@{/home/{id}/delete(id=${home.id})}">Delete</a>
+                <a th:href="@{/crud/update/{id}(id=${home.id})}">Update</a>
+            </div>
         </div>
     </div>
 </body>

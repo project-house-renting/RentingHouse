@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2d064ae-165b-4f66-866a-24caf53a2951" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../contract-service/src/test/java/fact/it/contractservice/ContractServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../contract-service/src/test/java/fact/it/contractservice/ContractServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../home-service/src/test/java/fact/it/homeservice/HomeServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../home-service/src/test/java/fact/it/homeservice/HomeServiceUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fact/it/maintenanceservice/service/MaintenanceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fact/it/maintenanceservice/service/MaintenanceService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fact/it/maintenanceservice/MaintenanceServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/fact/it/maintenanceservice/MaintenanceServiceUnitTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../payment-service/src/test/java/fact/it/paymentservice/PaymentServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/test/java/fact/it/paymentservice/PaymentServiceApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tenant-service/src/test/java/fact/it/tenantservice/TenantServiceUnitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenant-service/src/test/java/fact/it/tenantservice/TenantServiceUnitTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="b2d064ae-165b-4f66-866a-24caf53a2951" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,10 +42,6 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
-    "JUnit.MaintenanceServiceUnitTest.executor": "Run",
-    "JUnit.MaintenanceServiceUnitTest.testCreateMaintenance.executor": "Run",
-    "JUnit.MaintenanceServiceUnitTest.testFindMaintenancesByHomeId.executor": "Run",
-    "JUnit.MaintenanceServiceUnitTest.testGetAllMaintenances.executor": "Run",
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -61,9 +49,9 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.MaintenanceServiceApplication.executor": "Run",
-    "git-widget-placeholder": "CV-UnitTests",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/school/jaar_3/sem1/Advanced programming topics/project/RentingHouse/payment-service",
+    "last_opened_file_path": "C:/Users/Sande/Documenten/jaar 3/projecten/RentingHouse/payment-service",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,70 +60,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.MaintenanceServiceUnitTest">
-    <configuration name="MaintenanceServiceUnitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="maintenance-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fact.it.maintenanceservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fact.it.maintenanceservice" />
-      <option name="MAIN_CLASS_NAME" value="fact.it.maintenanceservice.MaintenanceServiceUnitTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MaintenanceServiceUnitTest.testCreateMaintenance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="maintenance-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fact.it.maintenanceservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fact.it.maintenanceservice" />
-      <option name="MAIN_CLASS_NAME" value="fact.it.maintenanceservice.MaintenanceServiceUnitTest" />
-      <option name="METHOD_NAME" value="testCreateMaintenance" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MaintenanceServiceUnitTest.testFindMaintenancesByHomeId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="maintenance-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fact.it.maintenanceservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fact.it.maintenanceservice" />
-      <option name="MAIN_CLASS_NAME" value="fact.it.maintenanceservice.MaintenanceServiceUnitTest" />
-      <option name="METHOD_NAME" value="testFindMaintenancesByHomeId" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MaintenanceServiceUnitTest.testGetAllMaintenances" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="maintenance-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="fact.it.maintenanceservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="fact.it.maintenanceservice" />
-      <option name="MAIN_CLASS_NAME" value="fact.it.maintenanceservice.MaintenanceServiceUnitTest" />
-      <option name="METHOD_NAME" value="testGetAllMaintenances" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="MaintenanceServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="maintenance-service" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="fact.it.maintenanceservice.MaintenanceServiceApplication" />
@@ -178,10 +103,8 @@
       <workItem from="1734386460013" duration="712000" />
       <workItem from="1734439351185" duration="4717000" />
       <workItem from="1734522510123" duration="4551000" />
-      <workItem from="1734554000445" duration="874000" />
-      <workItem from="1734557031888" duration="132000" />
-      <workItem from="1734557803933" duration="4298000" />
-      <workItem from="1734787253035" duration="1713000" />
+      <workItem from="1734554000445" duration="1469000" />
+      <workItem from="1734685636403" duration="1318000" />
     </task>
     <servers />
   </component>
