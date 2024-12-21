@@ -58,7 +58,7 @@ Beheert alle onderhoudsverzoeken. Als er problemen zijn in een woning kan de huu
 
 De onderhoudsverzoeken worden bijgehouden met volgende info:
 - beschrijving van wat er stuk is
-- Datum
+- datum
 - urgency
 - woning
 
@@ -75,7 +75,7 @@ Per contract houden we dan volgende info bij:
 De gateway met Google OAuth2 is een centrale poort die al het verkeer naar de achterliggende microservices beheert. Om de applicatie logischer te maken is hier een whitelist op geïmplementeerd. Zonder de whitelist zou iedereen dat zich met google aanmeld alle admin functies kunnen uitvoeren wat de bedoeling is.
 
 ### Web application (extra)
-Voor de frontend hebben we het simpel gehouden met een SpringBoot web application met Thymeleaf. Wanneer de beheerders inloggen met google, kunnen ze alle admin functies uitvoeren.
+Voor de frontend hebben we het simpel gehouden met een SpringBoot web application met Thymeleaf. Wanneer de beheerders inloggen met google, kunnen ze alle admin functies uitvoeren. De gewone gebruiker kan alle huizen bekijken die te huur staan.
 
 ## Testing (Postman)
 
@@ -102,4 +102,3 @@ Voor de frontend hebben we het simpel gehouden met een SpringBoot web applicatio
 
 ### Huis verwijderen
 ![](https://github.com/project-house-renting/RentingHouse/blob/main/images/deletehome.png)
-
